@@ -15,7 +15,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { areaPath, areas, areasByRegion } from '@/lib/areas';
 import { nav, site } from '@/lib/site';
+
+function isNavActive(pathname: string, href: string) {
+  if (href === '/') return pathname === '/';
+  const path = href.split('#')[0];
+  if (!path || path === '/') return false;
+  return pathname === path || pathname.startsWith(`${path}/`);
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -26,7 +34,8 @@ export function SiteHeader() {
       <div className="border-b border-primary/20 bg-primary/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 text-sm md:px-6">
           <p className="font-medium text-foreground/90">
-            Storm damage? We inspect, document, and repair roofs across Houston and Fort Worth.
+            Storm damage? We inspect, document, and repair roofs across Houston
+            and Fort Worth.
           </p>
           <a
             href={site.phoneHref}
@@ -44,19 +53,66 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-                pathname === item.href
-                  ? 'text-primary'
-                  : 'text-foreground/75 hover:text-foreground'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) =>
+            item.href === '/areas-served' ? (
+              <div key={item.href} className="relative group">
+                <Link
+                  href={item.href}
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                    isNavActive(pathname, item.href)
+                      ? 'text-primary'
+                      : 'text-foreground/75 hover:text-foreground'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="grid w-[28rem] grid-cols-2 gap-6 rounded-xl border border-border bg-popover p-4 shadow-lg">
+                    {(
+                      [
+                        ['houston', 'Greater Houston'],
+                        ['dfw', 'Dallas–Fort Worth'],
+                      ] as const
+                    ).map(([region, label]) => (
+                      <div key={region}>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                          {label}
+                        </p>
+                        <ul className="space-y-0.5">
+                          {areasByRegion(region).map((area) => (
+                            <li key={area.slug}>
+                              <Link
+                                href={areaPath(area.slug)}
+                                className={`block rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-muted ${
+                                  pathname === areaPath(area.slug)
+                                    ? 'text-primary'
+                                    : 'text-foreground/80'
+                                }`}
+                              >
+                                {area.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                  isNavActive(pathname, item.href)
+                    ? 'text-primary'
+                    : 'text-foreground/75 hover:text-foreground'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -77,8 +133,17 @@ export function SiteHeader() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu">
-                {open ? <XIcon className="size-4" /> : <MenuIcon className="size-4" />}
+              <Button
+                variant="outline"
+                size="icon"
+                className="lg:hidden"
+                aria-label="Open menu"
+              >
+                {open ? (
+                  <XIcon className="size-4" />
+                ) : (
+                  <MenuIcon className="size-4" />
+                )}
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
@@ -110,12 +175,29 @@ export function SiteHeader() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                      pathname === item.href
+                      isNavActive(pathname, item.href)
                         ? 'bg-primary/10 text-primary'
                         : 'text-foreground hover:bg-muted'
                     }`}
                   >
                     {item.label}
+                  </Link>
+                ))}
+                <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  Cities
+                </p>
+                {areas.map((area) => (
+                  <Link
+                    key={area.slug}
+                    href={areaPath(area.slug)}
+                    onClick={() => setOpen(false)}
+                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
+                      pathname === areaPath(area.slug)
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    }`}
+                  >
+                    {area.name}
                   </Link>
                 ))}
               </nav>

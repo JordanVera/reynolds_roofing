@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
 import { services } from '@/lib/services';
+import { areaPath, areas } from '@/lib/areas';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -201,6 +202,12 @@ export default function HomePage() {
               </div>
             </div>
             <div className="border-t border-border pt-5">
+              <Link
+                href="/areas-served"
+                className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:underline"
+              >
+                See all service areas
+              </Link>
               <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Business hours
               </p>
@@ -212,6 +219,38 @@ export default function HomePage() {
               </p>
             </div>
           </FadeIn>
+        </div>
+      </Section>
+
+      {/* Service areas */}
+      <Section className="bg-card/20 texas-grid">
+        <SectionHeading
+          eyebrow="Where we work"
+          title="Ten cities. Two offices. One standard."
+          description="Licensed crews from Katy and Arlington cover Houston, Fort Worth, and the communities in between."
+        />
+        <Stagger className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {areas.map((area) => (
+            <StaggerItem key={area.slug}>
+              <Link
+                href={areaPath(area.slug)}
+                className="flex h-full items-start gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:glow-primary"
+              >
+                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+                <div>
+                  <p className="text-sm font-semibold">{area.name}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {area.region === 'houston' ? 'Houston metro' : 'DFW metro'}
+                  </p>
+                </div>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline">
+            <Link href="/areas-served">View all service areas</Link>
+          </Button>
         </div>
       </Section>
 

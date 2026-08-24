@@ -5,6 +5,28 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/icons/favicon.ico',
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/areas-served/belbrook',
+        destination: '/areas-served/benbrook',
+        permanent: true,
+      },
+      {
+        source: '/areas-served/sugarland',
+        destination: '/areas-served/sugar-land',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

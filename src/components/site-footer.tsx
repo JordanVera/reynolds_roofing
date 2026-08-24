@@ -3,6 +3,7 @@ import { MapPinIcon, PhoneIcon, ShieldCheckIcon } from 'lucide-react';
 
 import { SiteLogo } from '@/components/site-logo';
 import { Separator } from '@/components/ui/separator';
+import { areaPath, areas } from '@/lib/areas';
 import { services } from '@/lib/services';
 import { site } from '@/lib/site';
 
@@ -26,7 +27,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-3 md:px-6">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div>
           <Link href="/" className="mb-3 inline-block">
             <SiteLogo className="h-12 w-auto" />
@@ -71,6 +72,24 @@ export function SiteFooter() {
 
         <div>
           <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Areas Served
+          </h3>
+          <ul className="space-y-2 text-sm">
+            {areas.map((area) => (
+              <li key={area.slug}>
+                <Link
+                  href={areaPath(area.slug)}
+                  className="inline-block text-muted-foreground transition-all hover:translate-x-0.5 hover:text-foreground"
+                >
+                  {area.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Quick Links
           </h3>
           <ul className="space-y-2 text-sm">
@@ -78,6 +97,7 @@ export function SiteFooter() {
               { href: '/', label: 'Home' },
               { href: '/#services', label: 'Services' },
               { href: '/#about', label: 'About' },
+              { href: '/areas-served', label: 'Areas Served' },
               { href: '/contact', label: 'Free Estimate' },
             ].map((link) => (
               <li key={link.href}>

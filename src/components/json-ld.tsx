@@ -1,3 +1,4 @@
+import { areas } from '@/lib/areas';
 import { site } from '@/lib/site';
 
 export function LocalBusinessJsonLd() {
@@ -17,7 +18,12 @@ export function LocalBusinessJsonLd() {
       postalCode: site.locations[0].zip,
       addressCountry: 'US',
     },
-    areaServed: 'Greater Houston, TX',
+    areaServed: areas.map((area) => ({
+      '@type': 'City',
+      name: area.name,
+      addressRegion: 'TX',
+      addressCountry: 'US',
+    })),
     openingHoursSpecification: site.hours.schema.map((h) => ({
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: h.dayOfWeek,
