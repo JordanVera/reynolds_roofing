@@ -73,3 +73,20 @@ export const aboutFaqs: FaqItem[] = [
       'No. The company was built to last longer than one storm season. We take pride in clients who call us back — and send us to the neighbor — not a one-off roof drop after hail.',
   },
 ];
+
+export const testimonialFaqs: FaqItem[] = [
+  {
+    question: 'Are these reviews from real customers?',
+    answer:
+      'Yes. Every testimonial on this page is a 5-star Google review written by a Reynolds Roofing TX customer. We did not edit the wording. Open Google to read the full set, including any review that was truncated here.',
+  },
+  {
+    question: 'Where can I read every Google review?',
+    answer: `Use the “View all Google reviews” button on this page, or search Reynolds Roofing TX in Google Maps at ${site.locations[0].address}, ${site.locations[0].city}, TX. That listing is the source for the quotes here.`,
+  },
+  {
+    question: 'Can I leave a review after a job?',
+    answer:
+      'Please do. Google reviews help the next homeowner decide who to call after a leak or a storm. After the work is finished, search Reynolds Roofing TX on Google and leave a rating from the listing.',
+  },
+];

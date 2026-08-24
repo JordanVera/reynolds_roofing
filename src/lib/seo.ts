@@ -95,3 +95,45 @@ export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
     })),
   };
 }
+
+export type ReviewSchemaItem = {
+  author: string;
+  body: string;
+  rating: number;
+  datePublished?: string;
+};
+
+export function reviewsJsonLd(reviews: ReviewSchemaItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${site.url}/testimonials`,
+    name: `Testimonials | ${site.name}`,
+    url: `${site.url}/testimonials`,
+    about: { '@id': schemaIds.organization },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: reviews.length,
+      itemListElement: reviews.map((review, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Review',
+          author: { '@type': 'Person', name: review.author },
+          reviewBody: review.body,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.rating,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          publisher: { '@type': 'Organization', name: 'Google' },
+          itemReviewed: { '@id': schemaIds.organization },
+          ...(review.datePublished
+            ? { datePublished: review.datePublished }
+            : {}),
+        },
+      })),
+    },
+  };
+}

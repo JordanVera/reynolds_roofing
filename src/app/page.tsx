@@ -10,9 +10,11 @@ import {
 } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { GoogleIcon } from '@/components/google-icon';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { ServiceCard } from '@/components/service-card';
+import { TestimonialCard } from '@/components/testimonial-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { LeadForm } from '@/components/lead-form';
@@ -27,6 +29,7 @@ import { areaPath, areas } from '@/lib/areas';
 import { homeFaqs } from '@/lib/faqs';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
+import { featuredTestimonials } from '@/lib/testimonials';
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -221,6 +224,36 @@ export default function HomePage() {
         <div className="mt-8 text-center">
           <Button asChild variant="outline">
             <Link href="/areas-served">View all service areas</Link>
+          </Button>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Google reviews"
+          title="Customers who already called William"
+          description="Five-star Google reviews from homeowners in our service area. Names and wording are unchanged from Google."
+        />
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredTestimonials.map((testimonial) => (
+            <StaggerItem key={testimonial.id}>
+              <TestimonialCard testimonial={testimonial} />
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild>
+            <Link href="/testimonials">Read more testimonials</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <a
+              href={site.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GoogleIcon />
+              View all on Google
+            </a>
           </Button>
         </div>
       </Section>

@@ -157,13 +157,13 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ModeToggle />
-          <a
+          {/* <a
             href={site.phoneHref}
             className="h-9 px-4 rounded-md hidden items-center gap-1.5 text-sm font-medium text-white dark:text-black transition-colors hover:text-primary md:flex bg-black dark:bg-white"
           >
             <PhoneIcon className="size-3.5" />
             {site.phone}
-          </a>
+          </a> */}
           <Button asChild className="hidden h-9 px-4 text-sm sm:inline-flex">
             <Link href="/contact">
               <ClipboardListIcon className="size-3.5" />
@@ -199,14 +199,14 @@ export function SiteHeader() {
                     Get Free Estimate
                   </Link>
                 </Button>
-                <a
+                {/* <a
                   href={site.phoneHref}
                   onClick={() => setOpen(false)}
                   className="mt-2 flex h-10 w-full items-center justify-center gap-2 rounded-lg border border-border text-sm font-medium transition-colors hover:bg-muted"
                 >
                   <PhoneIcon className="size-4" />
                   {site.phone}
-                </a>
+                </a> */}
               </div>
               <nav className="flex flex-col gap-0.5 px-4 pb-8 pt-4">
                 {nav.map((item) => (

@@ -1,3 +1,6 @@
+const googleReviewsUrl =
+  'https://www.google.com/maps/place/Reynolds+Roofing/@29.4550101,-98.0971933,8z/data=!4m10!1m2!2m1!1sReynolds+Roofing+TX+20501+Katy+Freeway+Katy+TX+77450!3m6!1s0x864120672351073f:0xec5699d732ced6b1!8m2!3d29.4550101!4d-95.6582285!15sCjRSZXlub2xkcyBSb29maW5nIFRYIDIwNTAxIEthdHkgRnJlZXdheSBLYXR5IFRYIDc3NDUwkgEScm9vZmluZ19jb250cmFjdG9y4AEA!16s%2Fg%2F1yfj43lzl?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D';
+
 export const site = {
   name: 'Reynolds Roofing TX',
   shortName: 'Reynolds Roofing',
@@ -15,7 +18,8 @@ export const site = {
   logo: '/logo/logo-black.png',
   ogImage: '/og.jpg',
   priceRange: '$$',
-  sameAs: [] as readonly string[],
+  googleReviewsUrl,
+  sameAs: [googleReviewsUrl],
   locations: [
     {
       id: 'katy',
@@ -65,5 +69,6 @@ export const nav = [
   { href: '/services', label: 'Services' },
   { href: '/areas-served', label: 'Areas Served' },
   { href: '/about', label: 'About' },
+  { href: '/testimonials', label: 'Testimonials' },
   { href: '/contact', label: 'Free Estimate' },
 ] as const;
