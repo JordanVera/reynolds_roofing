@@ -89,7 +89,7 @@ function KenBurnsSlide({
   );
 }
 
-function KenBurnsBackground() {
+export function KenBurnsBackground() {
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
 

@@ -48,11 +48,28 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-scroll: scroll var(--animation-duration, 60s)
     var(--animation-direction, forwards) linear infinite;
+  --animate-shingle: shingle-drift 3.4s ease-in-out infinite;
 }
 
 @keyframes scroll {
   to {
     transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes shingle-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(10px, -14px) rotate(7deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shingle {
+    animation: none;
   }
 }
 
