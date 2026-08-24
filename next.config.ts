@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: '/areas-served/sugar-land',
         permanent: true,
       },
+      {
+        source: '/about_us.html',
+        destination: '/about',
+        permanent: true,
+      },
     ];
   },
 };

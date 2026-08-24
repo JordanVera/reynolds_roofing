@@ -101,7 +101,7 @@ export function SiteFooter() {
             {[
               { href: '/', label: 'Home' },
               { href: '/services', label: 'Services' },
-              { href: '/#about', label: 'About' },
+              { href: '/about', label: 'About' },
               { href: '/areas-served', label: 'Areas Served' },
               { href: '/contact', label: 'Free Estimate' },
             ].map((link) => (

@@ -10,6 +10,7 @@ export function LocalBusinessJsonLd() {
     url: site.url,
     telephone: site.phone,
     email: site.email,
+    foundingDate: String(site.founded),
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.locations[0].address,

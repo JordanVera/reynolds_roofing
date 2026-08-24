@@ -33,25 +33,6 @@ const trustItems = [
   { icon: ClockIcon, label: 'Fast Response' },
 ];
 
-const reasons = [
-  {
-    title: 'Manufacturer Relationships',
-    body: "Long-standing partnerships with the industry's largest suppliers give us the flexibility to meet every budget and material preference.",
-  },
-  {
-    title: 'Storm Damage Specialists',
-    body: 'We inspect, document, and work with your insurance adjuster — making the claims process as painless as possible.',
-  },
-  {
-    title: 'Full-Service Capability',
-    body: 'From roofing to siding to gutters — one crew, one point of contact, no subcontracting surprises.',
-  },
-  {
-    title: 'Two Locations, One Standard',
-    body: "Whether you're in Katy or Arlington, the same licensed crew and same quality standards show up on every job.",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -135,21 +116,13 @@ export default function HomePage() {
           <FadeIn>
             <SectionHeading
               eyebrow="Who we are"
-              title="A roofing company with long-standing roots in Texas"
-              description="Reynolds Roofing TX is a full-service construction, commercial, and industrial roofing company. We have long-standing relationships with the industry's largest manufacturers and suppliers, giving us the flexibility to meet every client's needs."
+              title="A roofing company with roots in Texas since 2006"
+              description="Founded in Katy as a full-service roofing company, Reynolds Roofing TX now runs two offices — Katy for Houston and Arlington for Fort Worth — with licensed crews and long manufacturer relationships."
             />
-            <div className="mt-6 space-y-4">
-              {reasons.map((r) => (
-                <div key={r.title} className="flex items-start gap-3">
-                  <CheckCircleIcon className="mt-0.5 size-5 shrink-0 text-primary" />
-                  <div>
-                    <p className="text-sm font-semibold">{r.title}</p>
-                    <p className="mt-0.5 text-sm text-muted-foreground">
-                      {r.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-8">
+              <Button asChild>
+                <Link href="/about">Read our story</Link>
+              </Button>
             </div>
           </FadeIn>
 
