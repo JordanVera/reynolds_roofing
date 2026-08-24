@@ -4,13 +4,11 @@ import { PhoneIcon } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
-import { ServiceIcon } from '@/components/service-icon';
+import { ServiceCard } from '@/components/service-card';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
 import {
   categoryMeta,
-  servicePath,
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
@@ -96,26 +94,9 @@ export function ServiceCategoryView({
           description="Each page has the spec, process, and estimate form for that system — not a renamed copy of the others."
         />
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((service) => (
+          {items.map((service, index) => (
             <StaggerItem key={service.slug}>
-              <Link href={servicePath(service.slug)} className="block h-full">
-                <Card className="h-full transition-shadow hover:glow-primary">
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                      <ServiceIcon
-                        name={service.icon}
-                        className="size-5 text-primary"
-                      />
-                    </div>
-                    <CardTitle className="text-base">{service.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ServiceCard service={service} priority={index < 3} />
             </StaggerItem>
           ))}
         </Stagger>

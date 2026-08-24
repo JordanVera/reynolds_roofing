@@ -5,14 +5,13 @@ import { ArrowRightIcon, PhoneIcon } from 'lucide-react';
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
-import { ServiceIcon } from '@/components/service-icon';
+import { ServiceCard } from '@/components/service-card';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
 import {
   categoryMeta,
   categoryPath,
-  servicePath,
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
@@ -62,7 +61,9 @@ export default function ServicesHubPage() {
                       <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
                         {category.label}
                       </p>
-                      <CardTitle className="text-2xl">{category.name}</CardTitle>
+                      <CardTitle className="text-2xl">
+                        {category.name}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-sm leading-relaxed text-muted-foreground">
@@ -87,7 +88,9 @@ export default function ServicesHubPage() {
         return (
           <Section
             key={key}
-            className={key === 'residential' ? 'bg-card/20 texas-grid' : undefined}
+            className={
+              key === 'residential' ? 'bg-card/20 texas-grid' : undefined
+            }
           >
             <SectionHeading
               eyebrow={category.label}
@@ -97,24 +100,7 @@ export default function ServicesHubPage() {
             <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((service) => (
                 <StaggerItem key={service.slug}>
-                  <Link href={servicePath(service.slug)} className="block h-full">
-                    <Card className="h-full transition-shadow hover:glow-primary">
-                      <CardHeader>
-                        <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                          <ServiceIcon
-                            name={service.icon}
-                            className="size-5 text-primary"
-                          />
-                        </div>
-                        <CardTitle className="text-base">{service.name}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
-                          {service.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
+                  <ServiceCard service={service} />
                 </StaggerItem>
               ))}
             </Stagger>

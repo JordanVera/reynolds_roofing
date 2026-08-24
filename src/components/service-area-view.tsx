@@ -12,6 +12,7 @@ import {
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
+import { ServiceCard } from '@/components/service-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,7 +23,7 @@ import {
   regionMeta,
   type ServiceArea,
 } from '@/lib/areas';
-import { services, servicePath } from '@/lib/services';
+import { services } from '@/lib/services';
 import { site } from '@/lib/site';
 
 export function ServiceAreaView({ area }: { area: ServiceArea }) {
@@ -199,17 +200,10 @@ export function ServiceAreaView({ area }: { area: ServiceArea }) {
           title={`Roofing services in ${area.name}`}
           description="The same licensed crew handles the full exterior — not a different sub for every trade."
         />
-        <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <StaggerItem key={service.slug}>
-              <Link href={servicePath(service.slug)} className="block h-full">
-                <div className="h-full rounded-xl border border-border bg-card p-5 transition-shadow hover:glow-primary">
-                  <p className="text-sm font-semibold">{service.shortName}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                    {service.description}
-                  </p>
-                </div>
-              </Link>
+              <ServiceCard service={service} />
             </StaggerItem>
           ))}
         </Stagger>

@@ -7,6 +7,7 @@ export type Service = {
   formValue: string;
   category: ServiceCategory;
   icon: string;
+  image?: string;
   metaTitle: string;
   metaDescription: string;
   heroTitle: string;
@@ -513,6 +514,7 @@ export const services: Service[] = [
     formValue: 'Commercial Metal Roofing',
     category: 'commercial',
     icon: 'Layers',
+    image: '/services/commercial/metal-roofing.jpg',
     metaTitle: 'Commercial Metal Roofing | Standing Seam & Industrial Panels',
     metaDescription:
       'Commercial metal roof installation and repair in Houston and Fort Worth. Standing seam, lock seam, and industrial metal systems from Reynolds Roofing TX.',
@@ -575,6 +577,7 @@ export const services: Service[] = [
     formValue: 'Commercial Roof Inspection',
     category: 'commercial',
     icon: 'ClipboardCheck',
+    image: '/services/commercial/inspection-reports.jpg',
     metaTitle: 'Commercial Roof Inspections | PDF Reports & Maintenance Plans',
     metaDescription:
       'Commercial roof inspections in Houston and Fort Worth with PDF photo reports, remaining-life estimates, and written repair proposals from Reynolds Roofing TX.',
@@ -637,6 +640,7 @@ export const services: Service[] = [
     formValue: 'Commercial Roof Repair',
     category: 'commercial',
     icon: 'Wrench',
+    image: '/services/commercial/roof-repair.jpg',
     metaTitle: 'Commercial Roof Repair | Emergency Leaks & Replacements',
     metaDescription:
       'Commercial roof repair in Houston and Fort Worth — emergency leaks, maintenance, full replacement, and insurance-claim help from Reynolds Roofing TX.',
@@ -701,6 +705,7 @@ export const services: Service[] = [
     formValue: 'Commercial Leak Detection',
     category: 'commercial',
     icon: 'Droplets',
+    image: '/services/commercial/roof-leak-detection.jpg',
     metaTitle: 'Commercial Leak Detection | Same-Day Emergency Service',
     metaDescription:
       'Same-day commercial leak detection and emergency roofing in Houston and Fort Worth. Photo reports, recommended repairs, and preventative maintenance. Reynolds Roofing TX.',
@@ -763,6 +768,7 @@ export const services: Service[] = [
     formValue: 'Modified Bitumen Roofing',
     category: 'commercial',
     icon: 'Layers',
+    image: '/services/commercial/modified-bitumen.jpg',
     metaTitle: 'Modified Bitumen Roofing | Multi-Ply Commercial Systems',
     metaDescription:
       'Modified bitumen commercial roofing in Houston and Fort Worth — multi-ply membranes, insulation, flashings, and surfacing from Reynolds Roofing TX.',
@@ -825,6 +831,7 @@ export const services: Service[] = [
     formValue: 'Commercial Tile & Slate',
     category: 'commercial',
     icon: 'Square',
+    image: '/services/commercial/tile-service.jpg',
     metaTitle: 'Commercial Tile & Slate Roofing | Repair and Installation',
     metaDescription:
       'Commercial tile and slate roof repair and installation in Houston and Fort Worth. Long-lived, low-maintenance systems from Reynolds Roofing TX.',
@@ -887,6 +894,7 @@ export const services: Service[] = [
     formValue: 'Waterproofing & Coatings',
     category: 'commercial',
     icon: 'Shield',
+    image: '/services/commercial/waterproofing.jpg',
     metaTitle: 'Waterproofing & Roof Coatings | Restoration Without Tear-Off',
     metaDescription:
       'Commercial waterproofing and reflective roof coatings in Houston and Fort Worth. Restore low-slope roofs, decks, and walls without a full tear-off. Reynolds Roofing TX.',
@@ -949,6 +957,7 @@ export const services: Service[] = [
     formValue: 'TPO Roofing',
     category: 'commercial',
     icon: 'Grid3x3',
+    image: '/services/commercial/TPO.jpg',
     metaTitle: 'TPO Roofing | Thermoplastic Single-Ply for Texas',
     metaDescription:
       'TPO single-ply commercial roofing in Houston and Fort Worth. Reflective, energy-efficient membranes — fully adhered, mechanically attached, or ballasted. Reynolds Roofing TX.',

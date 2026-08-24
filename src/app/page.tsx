@@ -12,12 +12,11 @@ import {
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
-import { ServiceIcon } from '@/components/service-icon';
+import { ServiceCard } from '@/components/service-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
-import { servicePath, services } from '@/lib/services';
+import { services } from '@/lib/services';
 import { areaPath, areas } from '@/lib/areas';
 import { site } from '@/lib/site';
 
@@ -82,24 +81,7 @@ export default function HomePage() {
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <StaggerItem key={service.slug}>
-              <Link href={servicePath(service.slug)} className="block h-full">
-                <Card className="h-full transition-shadow hover:glow-primary">
-                  <CardHeader>
-                    <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                      <ServiceIcon
-                        name={service.icon}
-                        className="size-5 text-primary"
-                      />
-                    </div>
-                    <CardTitle className="text-base">{service.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ServiceCard service={service} />
             </StaggerItem>
           ))}
         </Stagger>
