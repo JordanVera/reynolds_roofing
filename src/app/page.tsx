@@ -7,37 +7,23 @@ import {
   MapPinIcon,
   ClockIcon,
   StarIcon,
-  HomeIcon,
-  WrenchIcon,
-  LayersIcon,
-  SquareIcon,
-  PanelLeftIcon,
-  MinusIcon,
 } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
+import { ServiceIcon } from '@/components/service-icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
-import { services } from '@/lib/services';
+import { servicePath, services } from '@/lib/services';
 import { areaPath, areas } from '@/lib/areas';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Roofing Contractor Houston & Katy TX | Free Inspections',
   description: site.description,
-};
-
-const iconMap: Record<string, React.ElementType> = {
-  Home: HomeIcon,
-  Wrench: WrenchIcon,
-  Layers: LayersIcon,
-  Square: SquareIcon,
-  PanelLeft: PanelLeftIcon,
-  Minus: MinusIcon,
 };
 
 const trustItems = [
@@ -110,41 +96,37 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="What we do"
           title="Every roofing service under one roof"
-          description="From full replacements to seamless gutters — Reynolds Roofing handles it all with licensed crews and top-tier materials."
+          description="Residential and commercial work from licensed crews — inspections, replacements, metal, tile, TPO, leak response, and the restoration that follows."
         />
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
-            const Icon = iconMap[service.icon] ?? HomeIcon;
-            return (
-              <StaggerItem key={service.slug}>
+          {services.map((service) => (
+            <StaggerItem key={service.slug}>
+              <Link href={servicePath(service.slug)} className="block h-full">
                 <Card className="h-full transition-shadow hover:glow-primary">
                   <CardHeader>
                     <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                      <Icon className="size-5 text-primary" />
+                      <ServiceIcon
+                        name={service.icon}
+                        className="size-5 text-primary"
+                      />
                     </div>
                     <CardTitle className="text-base">{service.name}</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
+                  <CardContent>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {service.description}
                     </p>
-                    <ul className="space-y-1">
-                      {service.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-2 text-xs text-muted-foreground"
-                        >
-                          <CheckCircleIcon className="mt-0.5 size-3.5 shrink-0 text-primary" />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
                   </CardContent>
                 </Card>
-              </StaggerItem>
-            );
-          })}
+              </Link>
+            </StaggerItem>
+          ))}
         </Stagger>
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline">
+            <Link href="/services">View all services</Link>
+          </Button>
+        </div>
       </Section>
 
       {/* About */}

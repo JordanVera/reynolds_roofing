@@ -16,6 +16,12 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { areaPath, areas, areasByRegion } from '@/lib/areas';
+import {
+  servicePath,
+  services,
+  servicesByCategory,
+  type ServiceCategory,
+} from '@/lib/services';
 import { nav, site } from '@/lib/site';
 
 function isNavActive(pathname: string, href: string) {
@@ -54,7 +60,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) =>
-            item.href === '/areas-served' ? (
+            item.href === '/areas-served' || item.href === '/services' ? (
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
@@ -67,35 +73,69 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
                 <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="grid w-[28rem] grid-cols-2 gap-6 rounded-xl border border-border bg-popover p-4 shadow-lg">
-                    {(
-                      [
-                        ['houston', 'Greater Houston'],
-                        ['dfw', 'Dallas–Fort Worth'],
-                      ] as const
-                    ).map(([region, label]) => (
-                      <div key={region}>
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                          {label}
-                        </p>
-                        <ul className="space-y-0.5">
-                          {areasByRegion(region).map((area) => (
-                            <li key={area.slug}>
-                              <Link
-                                href={areaPath(area.slug)}
-                                className={`block rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-muted ${
-                                  pathname === areaPath(area.slug)
-                                    ? 'text-primary'
-                                    : 'text-foreground/80'
-                                }`}
-                              >
-                                {area.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                  <div className="grid w-[30rem] grid-cols-2 gap-6 rounded-xl border border-border bg-popover p-4 shadow-lg">
+                    {item.href === '/services'
+                      ? (
+                          [
+                            ['residential', 'Residential'],
+                            ['commercial', 'Commercial'],
+                          ] as const satisfies ReadonlyArray<
+                            [ServiceCategory, string]
+                          >
+                        ).map(([category, label]) => (
+                          <div key={category}>
+                            <Link
+                              href={`/services/${category}`}
+                              className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground hover:text-foreground"
+                            >
+                              {label}
+                            </Link>
+                            <ul className="space-y-0.5">
+                              {servicesByCategory(category).map((service) => (
+                                <li key={service.slug}>
+                                  <Link
+                                    href={servicePath(service.slug)}
+                                    className={`block rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-muted ${
+                                      pathname === servicePath(service.slug)
+                                        ? 'text-primary'
+                                        : 'text-foreground/80'
+                                    }`}
+                                  >
+                                    {service.shortName}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))
+                      : (
+                          [
+                            ['houston', 'Greater Houston'],
+                            ['dfw', 'Dallas–Fort Worth'],
+                          ] as const
+                        ).map(([region, label]) => (
+                          <div key={region}>
+                            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                              {label}
+                            </p>
+                            <ul className="space-y-0.5">
+                              {areasByRegion(region).map((area) => (
+                                <li key={area.slug}>
+                                  <Link
+                                    href={areaPath(area.slug)}
+                                    className={`block rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-muted ${
+                                      pathname === areaPath(area.slug)
+                                        ? 'text-primary'
+                                        : 'text-foreground/80'
+                                    }`}
+                                  >
+                                    {area.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                   </div>
                 </div>
               </div>
@@ -181,6 +221,23 @@ export function SiteHeader() {
                     }`}
                   >
                     {item.label}
+                  </Link>
+                ))}
+                <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  Services
+                </p>
+                {services.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={servicePath(service.slug)}
+                    onClick={() => setOpen(false)}
+                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
+                      pathname === servicePath(service.slug)
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    }`}
+                  >
+                    {service.shortName}
                   </Link>
                 ))}
                 <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">

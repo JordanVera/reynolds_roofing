@@ -4,7 +4,7 @@ import { MapPinIcon, PhoneIcon, ShieldCheckIcon } from 'lucide-react';
 import { SiteLogo } from '@/components/site-logo';
 import { Separator } from '@/components/ui/separator';
 import { areaPath, areas } from '@/lib/areas';
-import { services } from '@/lib/services';
+import { servicePath, services } from '@/lib/services';
 import { site } from '@/lib/site';
 
 export function SiteFooter() {
@@ -64,7 +64,12 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             {services.map((s) => (
               <li key={s.slug}>
-                <span className="text-muted-foreground">{s.shortName}</span>
+                <Link
+                  href={servicePath(s.slug)}
+                  className="inline-block text-muted-foreground transition-all hover:translate-x-0.5 hover:text-foreground"
+                >
+                  {s.shortName}
+                </Link>
               </li>
             ))}
           </ul>
@@ -95,7 +100,7 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             {[
               { href: '/', label: 'Home' },
-              { href: '/#services', label: 'Services' },
+              { href: '/services', label: 'Services' },
               { href: '/#about', label: 'About' },
               { href: '/areas-served', label: 'Areas Served' },
               { href: '/contact', label: 'Free Estimate' },

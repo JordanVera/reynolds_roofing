@@ -8,12 +8,14 @@ import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { services } from '@/lib/services';
+import { servicesByCategory } from '@/lib/services';
 import { formsubmitEndpoint, site } from '@/lib/site';
 
 export function LeadForm({
@@ -61,11 +63,22 @@ export function LeadForm({
             <SelectValue placeholder="Choose a service" />
           </SelectTrigger>
           <SelectContent position="popper">
-            {services.map((s) => (
-              <SelectItem key={s.slug} value={s.formValue}>
-                {s.formValue}
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              <SelectLabel>Residential</SelectLabel>
+              {servicesByCategory('residential').map((s) => (
+                <SelectItem key={s.slug} value={s.formValue}>
+                  {s.formValue}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+            <SelectGroup>
+              <SelectLabel>Commercial</SelectLabel>
+              {servicesByCategory('commercial').map((s) => (
+                <SelectItem key={s.slug} value={s.formValue}>
+                  {s.formValue}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
       </Field>

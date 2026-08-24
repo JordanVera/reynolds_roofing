@@ -22,7 +22,7 @@ import {
   regionMeta,
   type ServiceArea,
 } from '@/lib/areas';
-import { services } from '@/lib/services';
+import { services, servicePath } from '@/lib/services';
 import { site } from '@/lib/site';
 
 export function ServiceAreaView({ area }: { area: ServiceArea }) {
@@ -202,12 +202,14 @@ export function ServiceAreaView({ area }: { area: ServiceArea }) {
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <StaggerItem key={service.slug}>
-              <div className="h-full rounded-xl border border-border bg-card p-5">
-                <p className="text-sm font-semibold">{service.shortName}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
-                </p>
-              </div>
+              <Link href={servicePath(service.slug)} className="block h-full">
+                <div className="h-full rounded-xl border border-border bg-card p-5 transition-shadow hover:glow-primary">
+                  <p className="text-sm font-semibold">{service.shortName}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
+              </Link>
             </StaggerItem>
           ))}
         </Stagger>
