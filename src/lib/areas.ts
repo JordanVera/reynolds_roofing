@@ -40,7 +40,7 @@ export const areas: ServiceArea[] = [
     region: 'houston',
     metaTitle: 'Houston Roofing Company | Repairs & Replacement',
     metaDescription:
-      'Reynolds Roofing TX is a Houston roofing contractor for residential and commercial roofs — replacements, repairs, metal, tile, siding, and gutters. Call 832.321.5088.',
+      'Reynolds Roofing TX is a Houston roofing contractor for residential and commercial roofs — replacements, repairs, metal, tile, siding, and gutters. Call 832-321-5088.',
     heroTitle: 'Houston roofing that keeps up with the city.',
     heroDescription:
       'A full-service roofing crew for Houston homes and businesses — built for Gulf Coast storms, heat, and the pace of a city that does not slow down.',
@@ -164,7 +164,7 @@ export const areas: ServiceArea[] = [
     region: 'houston',
     metaTitle: 'Stafford Roofing Company | Residential & Commercial',
     metaDescription:
-      'Stafford, TX roofing from Reynolds Roofing TX — roof replacement, repairs, metal, tile, siding, and gutters for homes and businesses. Call 832.321.5088.',
+      'Stafford, TX roofing from Reynolds Roofing TX — roof replacement, repairs, metal, tile, siding, and gutters for homes and businesses. Call 832-321-5088.',
     heroTitle: 'Stafford roofing for homes and businesses on the rise.',
     heroDescription:
       'Stafford punches above its size as a place to live and run a business. We cover both sides — residential roofs and commercial work along the US-59 corridor.',

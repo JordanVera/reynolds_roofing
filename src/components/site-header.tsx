@@ -159,7 +159,7 @@ export function SiteHeader() {
           <ModeToggle />
           <a
             href={site.phoneHref}
-            className="hidden items-center gap-1.5 text-sm font-medium text-foreground/70 transition-colors hover:text-primary md:flex"
+            className="h-9 px-4 rounded-md hidden items-center gap-1.5 text-sm font-medium text-white dark:text-black transition-colors hover:text-primary md:flex bg-black dark:bg-white"
           >
             <PhoneIcon className="size-3.5" />
             {site.phone}

@@ -55,7 +55,7 @@ export default function ContactPage() {
                 {
                   icon: PhoneIcon,
                   label: 'Katy, TX',
-                  value: '832.321.5088',
+                  value: '832-321-5088',
                   href: 'tel:+18323215088',
                 },
                 {

@@ -16,7 +16,12 @@ import { ServiceCard } from '@/components/service-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { LeadForm } from '@/components/lead-form';
-import { services } from '@/lib/services';
+import {
+  categoryMeta,
+  categoryPath,
+  servicesByCategory,
+  type ServiceCategory,
+} from '@/lib/services';
 import { areaPath, areas } from '@/lib/areas';
 import { site } from '@/lib/site';
 
@@ -71,26 +76,39 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Services */}
-      <Section id="services" className="bg-card/20 texas-grid">
-        <SectionHeading
-          eyebrow="What we do"
-          title="Every roofing service under one roof"
-          description="Residential and commercial work from licensed crews — inspections, replacements, metal, tile, TPO, leak response, and the restoration that follows."
-        />
-        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <StaggerItem key={service.slug}>
-              <ServiceCard service={service} />
-            </StaggerItem>
-          ))}
-        </Stagger>
-        <div className="mt-8 text-center">
-          <Button asChild variant="outline">
-            <Link href="/services">View all services</Link>
-          </Button>
-        </div>
-      </Section>
+      {(['residential', 'commercial'] as ServiceCategory[]).map((key) => {
+        const category = categoryMeta[key];
+        const items = servicesByCategory(key);
+        return (
+          <Section
+            key={key}
+            id={key === 'residential' ? 'services' : undefined}
+            className={
+              key === 'residential' ? 'bg-card/20 texas-grid' : undefined
+            }
+          >
+            <SectionHeading
+              eyebrow={category.label}
+              title={category.name}
+              description={category.heroDescription}
+            />
+            <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {items.map((service) => (
+                <StaggerItem key={service.slug}>
+                  <ServiceCard service={service} />
+                </StaggerItem>
+              ))}
+            </Stagger>
+            <div className="mt-8 text-center">
+              <Button asChild variant="outline">
+                <Link href={categoryPath(key)}>
+                  View {category.label.toLowerCase()} services
+                </Link>
+              </Button>
+            </div>
+          </Section>
+        );
+      })}
 
       {/* About */}
       <Section id="about">
