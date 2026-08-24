@@ -21,7 +21,7 @@ export const site = {
       phone: '832-321-5088',
     },
     {
-      city: 'Arlington',
+      city: 'Fort Worth',
       state: 'TX',
       address: '4840 Matlock Rd., Ste. D110',
       zip: '76018',

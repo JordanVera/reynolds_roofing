@@ -37,7 +37,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/95 backdrop-blur-md">
-      <div className="border-b border-primary/20 bg-primary/10">
+      {/* <div className="border-b border-primary/20 bg-primary/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 text-sm md:px-6">
           <p className="font-medium text-foreground/90">
             Storm damage? We inspect, document, and repair roofs across Houston
@@ -51,7 +51,7 @@ export function SiteHeader() {
             {site.phone}
           </a>
         </div>
-      </div>
+      </div> */}
 
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
         <Link href="/" className="shrink-0">

@@ -130,8 +130,8 @@ export default function AboutPage() {
                 relationships with every client — not a one-storm handshake.
               </p>
               <p>
-                Thank you for taking the time to learn about the company. We
-                are confident you will be satisfied choosing us for the next
+                Thank you for taking the time to learn about the company. We are
+                confident you will be satisfied choosing us for the next
                 project, and we look forward to speaking with you.
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
               { label: 'Founded', value: site.foundedLabel },
               { label: 'Combined experience', value: '50+ years' },
               { label: 'Corporate office', value: 'Katy, TX' },
-              { label: 'DFW office', value: 'Arlington, TX' },
+              { label: 'DFW office', value: 'Fort Worth, TX' },
             ].map((item) => (
               <div
                 key={item.label}
@@ -168,7 +168,9 @@ export default function AboutPage() {
           <FadeIn>
             <Card className="h-full">
               <CardHeader>
-                <CardTitle className="text-lg">Corporate office in Katy</CardTitle>
+                <CardTitle className="text-lg">
+                  Corporate office in Katy
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
                 <p>
@@ -181,7 +183,10 @@ export default function AboutPage() {
                   Founded as roofing, we now take on the trades around the roof
                   — siding, gutters, interior restoration, and the packages that
                   keep a system from failing early. Visit{' '}
-                  <Link href="/services" className="font-medium text-foreground underline-offset-4 hover:underline">
+                  <Link
+                    href="/services"
+                    className="font-medium text-foreground underline-offset-4 hover:underline"
+                  >
                     Services
                   </Link>{' '}
                   for the full list.
@@ -192,7 +197,9 @@ export default function AboutPage() {
           <FadeIn delay={0.08}>
             <Card className="h-full">
               <CardHeader>
-                <CardTitle className="text-lg">Arlington office for Fort Worth</CardTitle>
+                <CardTitle className="text-lg">
+                  Arlington office for Fort Worth
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
                 <p>
@@ -273,7 +280,9 @@ export default function AboutPage() {
               <p className="mt-4 text-sm text-muted-foreground">
                 {site.hours.weekdays}
               </p>
-              <p className="text-sm text-muted-foreground">{site.hours.weekend}</p>
+              <p className="text-sm text-muted-foreground">
+                {site.hours.weekend}
+              </p>
             </div>
           ))}
         </div>
