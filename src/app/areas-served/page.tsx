@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowRightIcon, MapPinIcon, PhoneIcon } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { JsonLd } from '@/components/json-ld';
+import { PageBreadcrumbs } from '@/components/page-breadcrumbs';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { Button } from '@/components/ui/button';
@@ -14,13 +16,15 @@ import {
   regionMeta,
   type ServiceRegion,
 } from '@/lib/areas';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Areas Served | Houston & Fort Worth Roofing',
   description:
     'Reynolds Roofing TX serves Houston, Katy, Sugar Land, Stafford, Cypress, Jersey Village, Greater Houston, Fort Worth, Arlington, and Benbrook with licensed local crews.',
-};
+  path: '/areas-served',
+});
 
 const regions: { key: ServiceRegion; title: string; description: string }[] = [
   {
@@ -40,6 +44,12 @@ const regions: { key: ServiceRegion; title: string; description: string }[] = [
 export default function AreasServedPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Areas Served', path: '/areas-served' },
+        ])}
+      />
       <PageHero
         eyebrow="Houston · Fort Worth · Surrounding cities"
         title="Areas we serve"
@@ -60,6 +70,10 @@ export default function AreasServedPage() {
           </a>
         </Button>
       </PageHero>
+
+      <PageBreadcrumbs
+        items={[{ href: '/', label: 'Home' }, { label: 'Areas Served' }]}
+      />
 
       <Section>
         <div className="grid items-start gap-10 lg:grid-cols-2">

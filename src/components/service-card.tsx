@@ -25,7 +25,7 @@ export function ServiceCard({
           <div className="absolute inset-0 z-0" aria-hidden>
             <Image
               src={service.image}
-              alt=""
+              alt={service.name}
               fill
               priority={priority}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

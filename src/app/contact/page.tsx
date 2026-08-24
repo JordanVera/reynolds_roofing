@@ -8,16 +8,22 @@ import {
 } from 'lucide-react';
 
 import { FadeIn } from '@/components/motion';
+import { FaqList } from '@/components/faq-list';
+import { JsonLd } from '@/components/json-ld';
+import { PageBreadcrumbs } from '@/components/page-breadcrumbs';
 import { PageHero } from '@/components/page-hero';
 import { Section } from '@/components/section';
 import { Badge } from '@/components/ui/badge';
 import { LeadForm } from '@/components/lead-form';
+import { contactFaqs } from '@/lib/faqs';
+import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Free Estimate & Roof Inspection',
-  description: `Request a free roof inspection and estimate with ${site.name}. Call ${site.phone}.`,
-};
+  description: `Request a free roof inspection and estimate with ${site.name}. Call ${site.phone} or ${site.locations[1].phone}.`,
+  path: '/contact',
+});
 
 const trustPoints = [
   'Free walk-through and written estimate',
@@ -29,11 +35,31 @@ const trustPoints = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ContactPage',
+          name: `Contact ${site.name}`,
+          url: `${site.url}/contact`,
+          mainEntity: { '@id': schemaIds.organization },
+        }}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Free Estimate', path: '/contact' },
+        ])}
+      />
+
       <PageHero
         eyebrow="Free, no-obligation"
         title="Request a free roof inspection"
         description="Choose the way that works for you — call, or fill out the form. We will get back to you during business hours."
         compact
+      />
+
+      <PageBreadcrumbs
+        items={[{ href: '/', label: 'Home' }, { label: 'Free Estimate' }]}
       />
 
       <Section>
@@ -51,58 +77,55 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-3">
-              {[
-                {
-                  icon: PhoneIcon,
-                  label: 'Katy, TX',
-                  value: '832-321-5088',
-                  href: 'tel:+18323215088',
-                },
-                {
-                  icon: PhoneIcon,
-                  label: 'Fort Worth, TX',
-                  value: '817.789.8458',
-                  href: 'tel:+18177898458',
-                },
-                {
-                  icon: MapPinIcon,
-                  label: 'Katy Location',
-                  value: '20501 Katy Freeway #203, Katy TX 77450',
-                },
-                {
-                  icon: ClockIcon,
-                  label: 'Hours',
-                  value: site.hours.weekdays,
-                  sub: site.hours.weekend,
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="flex items-start gap-4 rounded-xl border border-border bg-card p-4"
-                >
-                  <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <item.icon className="size-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {item.label}
-                    </p>
-                    {item.href ? (
+              {site.locations.map((location) => (
+                <div key={location.id} className="space-y-3">
+                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                    <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <PhoneIcon className="size-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {`${location.city}, ${location.state}`}
+                      </p>
                       <a
-                        href={item.href}
+                        href={`tel:+1${location.phone.replace(/\D/g, '')}`}
                         className="mt-0.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
                       >
-                        {item.value}
+                        {location.phone}
                       </a>
-                    ) : (
-                      <p className="mt-0.5 text-sm font-semibold">{item.value}</p>
-                    )}
-                    {'sub' in item && item.sub && (
-                      <p className="text-xs text-muted-foreground">{item.sub}</p>
-                    )}
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                    <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <MapPinIcon className="size-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {`${location.city} office`}
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold">
+                        {`${location.address}, ${location.city} ${location.state} ${location.zip}`}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
+              <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <ClockIcon className="size-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Hours
+                  </p>
+                  <p className="mt-0.5 text-sm font-semibold">
+                    {site.hours.weekdays}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {site.hours.weekend}
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-3 border-t border-border pt-4">
@@ -139,6 +162,12 @@ export default function ContactPage() {
           </FadeIn>
         </div>
       </Section>
+
+      <FaqList
+        faqs={contactFaqs}
+        title="Before you call"
+        description="How inspections are scheduled and which office to use."
+      />
     </>
   );
 }

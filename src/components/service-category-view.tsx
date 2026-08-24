@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { PhoneIcon } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { FaqList } from '@/components/faq-list';
+import { PageBreadcrumbs } from '@/components/page-breadcrumbs';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { ServiceCard } from '@/components/service-card';
@@ -45,29 +47,13 @@ export function ServiceCategoryView({
         </Button>
       </PageHero>
 
-      <div className="border-b border-border bg-card/60">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm md:px-6">
-          <Link
-            href="/"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Home
-          </Link>
-          <span className="text-muted-foreground/50" aria-hidden>
-            /
-          </span>
-          <Link
-            href="/services"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Services
-          </Link>
-          <span className="text-muted-foreground/50" aria-hidden>
-            /
-          </span>
-          <span className="font-medium">{meta.label}</span>
-        </div>
-      </div>
+      <PageBreadcrumbs
+        items={[
+          { href: '/', label: 'Home' },
+          { href: '/services', label: 'Services' },
+          { label: meta.label },
+        ]}
+      />
 
       <Section>
         <FadeIn>
@@ -101,6 +87,12 @@ export function ServiceCategoryView({
           ))}
         </Stagger>
       </Section>
+
+      <FaqList
+        faqs={meta.faqs}
+        title={`${meta.label} roofing questions`}
+        description="What to expect before you schedule a free inspection."
+      />
 
       <Section className="bg-card/30 stripe-pattern">
         <div className="mx-auto max-w-3xl">

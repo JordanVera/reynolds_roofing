@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowRightIcon, PhoneIcon } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { JsonLd } from '@/components/json-ld';
+import { PageBreadcrumbs } from '@/components/page-breadcrumbs';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { ServiceCard } from '@/components/service-card';
@@ -15,19 +17,27 @@ import {
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Roofing Services | Residential & Commercial',
   description:
     'Reynolds Roofing TX offers a full line of residential and commercial roofing — inspections, shingles, metal, tile, TPO, leak repair, waterproofing, and restoration in Houston and Fort Worth.',
-};
+  path: '/services',
+});
 
 const categories: ServiceCategory[] = ['residential', 'commercial'];
 
 export default function ServicesHubPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+        ])}
+      />
       <PageHero
         eyebrow="Residential · Commercial · Restoration"
         title="Roofing services for Houston and Fort Worth"
@@ -48,6 +58,10 @@ export default function ServicesHubPage() {
           </a>
         </Button>
       </PageHero>
+
+      <PageBreadcrumbs
+        items={[{ href: '/', label: 'Home' }, { label: 'Services' }]}
+      />
 
       <Section>
         <div className="grid gap-6 lg:grid-cols-2">

@@ -1,42 +1,102 @@
 import { areas } from '@/lib/areas';
-import { site } from '@/lib/site';
+import { absoluteUrl, schemaIds } from '@/lib/seo';
+import { site, type SiteLocation } from '@/lib/site';
 
-export function LocalBusinessJsonLd() {
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'RoofingContractor',
-    name: site.name,
-    description: site.description,
-    url: site.url,
-    telephone: site.phone,
-    email: site.email,
-    foundingDate: String(site.founded),
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: site.locations[0].address,
-      addressLocality: site.locations[0].city,
-      addressRegion: site.locations[0].state,
-      postalCode: site.locations[0].zip,
-      addressCountry: 'US',
-    },
-    areaServed: areas.map((area) => ({
-      '@type': 'City',
-      name: area.name,
-      addressRegion: 'TX',
-      addressCountry: 'US',
-    })),
-    openingHoursSpecification: site.hours.schema.map((h) => ({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: h.dayOfWeek,
-      opens: h.opens,
-      closes: h.closes,
-    })),
-  };
-
+export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
+}
+
+function postalAddress(location: SiteLocation) {
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: location.address,
+    addressLocality: location.city,
+    addressRegion: location.state,
+    postalCode: location.zip,
+    addressCountry: 'US',
+  };
+}
+
+function openingHours() {
+  return site.hours.schema.map((hours) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [...hours.dayOfWeek],
+    opens: hours.opens,
+    closes: hours.closes,
+  }));
+}
+
+function officeNode(location: SiteLocation) {
+  const region = location.id === 'katy' ? 'houston' : 'dfw';
+  const served = areas.filter((area) => area.region === region);
+
+  return {
+    '@type': 'RoofingContractor',
+    '@id': schemaIds.office(location.id),
+    name: `${site.name} — ${location.city}`,
+    description: site.description,
+    url: site.url,
+    telephone: location.phone,
+    email: site.email,
+    priceRange: site.priceRange,
+    image: absoluteUrl(site.ogImage),
+    logo: absoluteUrl(site.logo),
+    parentOrganization: { '@id': schemaIds.organization },
+    address: postalAddress(location),
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: location.geo.latitude,
+      longitude: location.geo.longitude,
+    },
+    hasMap: location.mapsUrl,
+    areaServed: served.map((area) => ({
+      '@type': 'City',
+      name: area.name,
+      addressRegion: 'TX',
+      addressCountry: 'US',
+    })),
+    openingHoursSpecification: openingHours(),
+  };
+}
+
+export function LocalBusinessJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': schemaIds.organization,
+        name: site.name,
+        legalName: site.name,
+        description: site.description,
+        url: site.url,
+        email: site.email,
+        telephone: site.phone,
+        foundingDate: String(site.founded),
+        logo: absoluteUrl(site.logo),
+        image: absoluteUrl(site.ogImage),
+        ...(site.sameAs.length > 0 ? { sameAs: [...site.sameAs] } : {}),
+        subOrganization: site.locations.map((location) => ({
+          '@id': schemaIds.office(location.id),
+        })),
+      },
+      {
+        '@type': 'WebSite',
+        '@id': schemaIds.website,
+        url: site.url,
+        name: site.name,
+        description: site.description,
+        publisher: { '@id': schemaIds.organization },
+        inLanguage: 'en-US',
+      },
+      ...site.locations.map(officeNode),
+    ],
+  };
+
+  return <JsonLd data={data} />;
 }

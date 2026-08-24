@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CheckCircleIcon, PhoneIcon } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { FaqList } from '@/components/faq-list';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { ServiceIcon } from '@/components/service-icon';
@@ -9,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
+import { areaPath, areas } from '@/lib/areas';
 import {
   categoryMeta,
   categoryPath,
@@ -94,6 +97,17 @@ export function ServiceView({ service }: { service: Service }) {
                 {paragraph}
               </p>
             ))}
+            {service.image ? (
+              <div className="relative mt-8 aspect-4/3 max-w-2xl overflow-hidden rounded-2xl border border-border">
+                <Image
+                  src={service.image}
+                  alt={`${service.name} in Houston and Fort Worth`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : null}
           </FadeIn>
 
           <FadeIn
@@ -104,7 +118,10 @@ export function ServiceView({ service }: { service: Service }) {
               {category.label}
             </Badge>
             <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-              <ServiceIcon name={service.icon} className="size-5 text-primary" />
+              <ServiceIcon
+                name={service.icon}
+                className="size-5 text-primary"
+              />
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground">
               {service.description}
@@ -220,6 +237,27 @@ export function ServiceView({ service }: { service: Service }) {
           </div>
         </Section>
       ) : null}
+
+      <Section>
+        <SectionHeading
+          eyebrow="Areas served"
+          title={`${service.shortName} across Houston and Fort Worth`}
+          description="Licensed crews from the Katy and Arlington offices. Open a city page for local weather, neighborhoods, and the phone that will take the call."
+        />
+        <div className="flex flex-wrap gap-3">
+          {areas.map((area) => (
+            <Button key={area.slug} asChild variant="outline">
+              <Link href={areaPath(area.slug)}>{`${area.name} roofing`}</Link>
+            </Button>
+          ))}
+        </div>
+      </Section>
+
+      <FaqList
+        faqs={service.faqs}
+        title={`Questions about ${service.shortName.toLowerCase()}`}
+        description="Straight answers on process, Texas weather, and when to call."
+      />
 
       <Section className="bg-card/30 stripe-pattern">
         <div className="mx-auto max-w-3xl">

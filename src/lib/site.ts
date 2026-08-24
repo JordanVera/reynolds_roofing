@@ -12,20 +12,32 @@ export const site = {
   city: 'Katy',
   state: 'TX',
   region: 'Katy, TX',
+  logo: '/logo/logo-black.png',
+  ogImage: '/og.jpg',
+  priceRange: '$$',
+  sameAs: [] as readonly string[],
   locations: [
     {
+      id: 'katy',
       city: 'Katy',
       state: 'TX',
       address: '20501 Katy Freeway #203',
       zip: '77450',
       phone: '832-321-5088',
+      geo: { latitude: 29.78438, longitude: -95.72841 },
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=20501+Katy+Freeway+%23203+Katy+TX+77450',
     },
     {
-      city: 'Fort Worth',
+      id: 'arlington',
+      city: 'Arlington',
       state: 'TX',
       address: '4840 Matlock Rd., Ste. D110',
       zip: '76018',
       phone: '817-789-8458',
+      geo: { latitude: 32.66925, longitude: -97.11533 },
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=4840+Matlock+Rd+Ste+D110+Arlington+TX+76018',
     },
   ],
   hours: {
@@ -43,6 +55,8 @@ export const site = {
   founded: 2006,
   foundedLabel: 'Spring 2006',
 } as const;
+
+export type SiteLocation = (typeof site.locations)[number];
 
 export const formsubmitEndpoint = `https://formsubmit.co/${site.email}`;
 

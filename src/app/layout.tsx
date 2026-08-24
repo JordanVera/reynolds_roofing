@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Roofing Contractor Katy & Houston, TX | Free Estimates | ${site.name}`,
+    default: `Houston & Fort Worth Roofing | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -32,11 +32,26 @@ export const metadata: Metadata = {
     icon: [{ url: '/icons/favicon.ico', type: 'image/x-icon' }],
   },
   openGraph: {
-    title: site.name,
+    title: `Houston & Fort Worth Roofing | ${site.name}`,
     description: site.description,
     locale: 'en_US',
     type: 'website',
     siteName: site.name,
+    url: site.url,
+    images: [
+      {
+        url: site.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${site.name} roofing in Houston and Fort Worth`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `Houston & Fort Worth Roofing | ${site.name}`,
+    description: site.description,
+    images: [site.ogImage],
   },
 };
 

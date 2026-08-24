@@ -11,19 +11,25 @@ import {
 } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
+import { FaqList } from '@/components/faq-list';
+import { JsonLd } from '@/components/json-ld';
+import { PageBreadcrumbs } from '@/components/page-breadcrumbs';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
+import { aboutFaqs } from '@/lib/faqs';
+import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
 import { site } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'About Us | Texas Roofing Since 2006',
+export const metadata: Metadata = pageMetadata({
+  title: 'Texas Roofing Since 2006',
   description:
     'Reynolds Roofing TX was founded in Spring 2006 in Katy, with an Arlington office for Fort Worth. Full-service residential and commercial roofing, remodeling trades, and 50+ years of combined experience.',
-};
+  path: '/about',
+});
 
 const standards = [
   {
@@ -53,29 +59,18 @@ const jsonLd = {
   '@type': 'AboutPage',
   name: `About ${site.name}`,
   url: `${site.url}/about`,
-  mainEntity: {
-    '@type': 'RoofingContractor',
-    name: site.name,
-    foundingDate: String(site.founded),
-    telephone: site.phone,
-    url: site.url,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: site.locations[0].address,
-      addressLocality: site.locations[0].city,
-      addressRegion: site.locations[0].state,
-      postalCode: site.locations[0].zip,
-      addressCountry: 'US',
-    },
-  },
+  mainEntity: { '@id': schemaIds.organization },
 };
 
 export default function AboutPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ])}
       />
 
       <PageHero
@@ -99,20 +94,9 @@ export default function AboutPage() {
         </Button>
       </PageHero>
 
-      <div className="border-b border-border bg-card/60">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3 text-sm md:px-6">
-          <Link
-            href="/"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Home
-          </Link>
-          <span className="text-muted-foreground/50" aria-hidden>
-            /
-          </span>
-          <span className="font-medium">About</span>
-        </div>
-      </div>
+      <PageBreadcrumbs
+        items={[{ href: '/', label: 'Home' }, { label: 'About' }]}
+      />
 
       <Section>
         <div className="grid items-start gap-12 lg:grid-cols-2">
@@ -142,7 +126,7 @@ export default function AboutPage() {
               { label: 'Founded', value: site.foundedLabel },
               { label: 'Combined experience', value: '50+ years' },
               { label: 'Corporate office', value: 'Katy, TX' },
-              { label: 'DFW office', value: 'Fort Worth, TX' },
+              { label: 'DFW office', value: 'Arlington, TX' },
             ].map((item) => (
               <div
                 key={item.label}
@@ -287,6 +271,12 @@ export default function AboutPage() {
           ))}
         </div>
       </Section>
+
+      <FaqList
+        faqs={aboutFaqs}
+        title="About Reynolds Roofing TX"
+        description="Who we are, where we work, and how the two offices split Houston and Fort Worth."
+      />
 
       <Section className="bg-card/30 stripe-pattern">
         <div className="mx-auto max-w-3xl">

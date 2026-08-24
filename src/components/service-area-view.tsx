@@ -16,6 +16,7 @@ import { ServiceCard } from '@/components/service-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { FaqList } from '@/components/faq-list';
 import { LeadForm } from '@/components/lead-form';
 import {
   areaPath,
@@ -228,6 +229,12 @@ export function ServiceAreaView({ area }: { area: ServiceArea }) {
           </div>
         </Section>
       ) : null}
+
+      <FaqList
+        faqs={area.faqs}
+        title={`Roofing questions in ${area.name}`}
+        description={`What ${area.name} homeowners and property managers ask before they schedule an inspection.`}
+      />
 
       <Section className="bg-card/30 stripe-pattern">
         <div className="mx-auto max-w-3xl">

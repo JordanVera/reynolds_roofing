@@ -1,3 +1,5 @@
+import type { FaqItem } from '@/lib/seo';
+
 export type ServiceCategory = 'residential' | 'commercial';
 
 export type Service = {
@@ -18,6 +20,7 @@ export type Service = {
   bullets: string[];
   process: { title: string; body: string }[];
   related: string[];
+  faqs: FaqItem[];
 };
 
 export const categoryMeta: Record<
@@ -31,6 +34,7 @@ export const categoryMeta: Record<
     heroTitle: string;
     heroDescription: string;
     intro: string[];
+    faqs: FaqItem[];
   }
 > = {
   residential: {
@@ -48,6 +52,30 @@ export const categoryMeta: Record<
       'Residential roofs are not interchangeable. Slope, ventilation, HOA rules, and the last storm all change the spec. We install and repair asphalt, tile, slate, and metal systems, and we stay on the job for the interior and exterior work that follows a leak.',
       'Whether you are buying, selling, appraising, or renovating, the condition of the roof can change the deal. A dedicated inspection is the right first step — not a glance from the driveway.',
     ],
+    faqs: [
+      {
+        question:
+          'What residential roofing services do you offer in Houston and Fort Worth?',
+        answer:
+          'Reynolds Roofing TX inspects, repairs, and replaces residential roofs from the Katy and Arlington offices — asphalt shingles, tile, slate, and metal, plus the interior and exterior work a leak leaves behind. We also run preventative maintenance packages so a small issue does not become a tear-off.',
+      },
+      {
+        question:
+          'How do I know if my house needs a repair or a full roof replacement?',
+        answer:
+          'A dedicated roof inspection answers that — not a look from the driveway. We photograph the field, flashings, and ventilation, estimate remaining life, and put repair versus replace in a written estimate so you can decide on a timeline.',
+      },
+      {
+        question: 'Do you work with HOA architectural rules?',
+        answer:
+          'Yes. Many Houston-area and DFW communities have color, profile, and material standards. We spec manufacturer systems that meet the look the neighborhood expects without cutting corners on underlayment, fastening, or ventilation.',
+      },
+      {
+        question: 'Are residential inspections free?',
+        answer:
+          'Yes. We offer a free walk-through and a written estimate. You decide whether to repair, maintain, or replace — there is no pressure to sign on the roof.',
+      },
+    ],
   },
   commercial: {
     slug: 'commercial',
@@ -63,6 +91,30 @@ export const categoryMeta: Record<
       'Reynolds Roofing TX handles commercial and industrial roofing from the same two Texas offices that run residential work. Commercial roofs are unique — low slope, HVAC penetrations, parapets, and occupied buildings all change the job.',
       'We determine the general condition of the roof, its remaining life, and the maintenance or repairs that actually matter. Manufacturer relationships give us the flexibility to spec TPO, modified bitumen, metal, tile, coatings, and the rest of the commercial stack without forcing one product.',
       'When a roof leaks, the clock is running. We treat commercial leak calls as urgent work and plan replacements so they interfere as little as possible with the business underneath.',
+    ],
+    faqs: [
+      {
+        question: 'What commercial roofing systems do you install?',
+        answer:
+          'We spec TPO, modified bitumen, metal, tile, coatings, and related commercial assemblies from the same Katy and Arlington offices that run residential work. Manufacturer relationships let us match the deck instead of forcing one product on every building.',
+      },
+      {
+        question:
+          'Can you repair a commercial leak without shutting the business down?',
+        answer:
+          'That is the goal. Emergency leak calls are treated as urgent. Planned repairs and replacements are staged around occupancy so a leak does not have to close the doors for a week.',
+      },
+      {
+        question: 'Do you inspect commercial roofs before a sale or refinance?',
+        answer:
+          'Yes. We document condition, remaining life, and the repairs that actually matter in a PDF with photos — the kind of report a buyer, lender, or facilities manager can act on, not a driveway glance.',
+      },
+      {
+        question:
+          'How fast do you respond to a commercial leak in Houston or Fort Worth?',
+        answer:
+          'Same-day emergency leak service is on the board when water is in the building. Call the Katy office at 832-321-5088 or the Arlington office at 817-789-8458 and we will get a crew moving.',
+      },
     ],
   },
 };
@@ -130,6 +182,30 @@ export const services: Service[] = [
       'residential-home-improvement',
       'residential-exterior-repairs',
     ],
+    faqs: [
+      {
+        question:
+          'Is a roof inspection more thorough than a general home inspection?',
+        answer:
+          'Usually, yes. A general home inspector often will not spend dedicated time on the roof because of access, liability, and schedule. We get on the roof, photograph deficiencies, and put condition, remaining life, and a written repair estimate in a PDF you can send to a buyer, an adjuster, or yourself.',
+      },
+      {
+        question:
+          'When should I schedule a residential roof inspection in Houston or Fort Worth?',
+        answer:
+          'Before you buy or sell, after a hail or wind event, or if the roof is approaching typical shingle age. Putting off a minor repair is how Texas weather turns it into a replacement. We inspect from the Katy and Arlington offices.',
+      },
+      {
+        question: 'What do I receive after the inspection?',
+        answer:
+          'A PDF report with photos tied to each finding, notes on material type and remaining life, and — if work is needed — a detailed written estimate. You are not left with a vague “call a roofer.”',
+      },
+      {
+        question: 'Do you charge for a residential roof inspection?',
+        answer:
+          'Inspections are free. If you need repairs or a replacement, the estimate is attached to the report so you can decide on your timeline with no pressure on the roof.',
+      },
+    ],
   },
   {
     slug: 'residential-asphalt-shingles',
@@ -192,6 +268,29 @@ export const services: Service[] = [
       'residential-tile',
       'residential-metal-roofing',
       'residential-roof-inspections',
+    ],
+    faqs: [
+      {
+        question:
+          'Are asphalt shingles a good choice for Houston and Fort Worth weather?',
+        answer:
+          'They are the most common sloped-roof material in Texas when the weight, wind rating, and warranty match the climate. We spec architectural and premium shingles for Gulf humidity and DFW hail — not a generic inland bundle — and install them to the manufacturer’s nailing and ventilation spec.',
+      },
+      {
+        question: 'Should I repair damaged shingles or replace the whole roof?',
+        answer:
+          'Missing tabs, bruised fields after hail, and tired ridges can often be repaired. When the roof is at the end of its life or stacked too many layers, we tear off and replace. We will not add a third layer and hope.',
+      },
+      {
+        question: 'Do asphalt shingles come with a manufacturer warranty?',
+        answer:
+          'Yes, depending on the product — typically from about 20 years to a lifetime material warranty. We install to spec so that warranty stays attached to the roof, not just the receipt.',
+      },
+      {
+        question: 'Can you match HOA colors and profiles?',
+        answer:
+          'Yes. We work with major manufacturers so the shingle color and profile meet neighborhood rules without cutting corners on underlayment, starter, ridges, or ventilation.',
+      },
     ],
   },
   {
@@ -256,6 +355,29 @@ export const services: Service[] = [
       'residential-metal-roofing',
       'commercial-tile',
     ],
+    faqs: [
+      {
+        question: 'How long does a tile or slate roof last in Texas?',
+        answer:
+          'A well-installed tile or slate roof lasts for decades — often through several asphalt cycles — if the underlayment, copper flashings, and fastening are treated as a system. The tile you see from the street is only as good as what is under it.',
+      },
+      {
+        question:
+          'Can you repair a tile roof without replacing the whole thing?',
+        answer:
+          'Often yes. Broken tiles, slipped courses, and failed flashings are everyday work. We match profiles and repair when the field is still sound instead of defaulting to a full tear-off.',
+      },
+      {
+        question: 'Does a tile roof need a stronger roof deck?',
+        answer:
+          'Tile and slate are heavy. We confirm structure, underlayment, and drainage before a single piece goes up so the house can carry the system in Texas wind.',
+      },
+      {
+        question: 'Why do you use copper flashings on slate?',
+        answer:
+          'Slate fails at the details. Copper flashings and the right underlayment are how a specialty roof stays watertight — not a shingle-style flashing kit improvised on a stone roof.',
+      },
+    ],
   },
   {
     slug: 'residential-metal-roofing',
@@ -318,6 +440,28 @@ export const services: Service[] = [
       'commercial-metal-roofing',
       'residential-asphalt-shingles',
       'residential-tile',
+    ],
+    faqs: [
+      {
+        question: 'Can a metal roof go over my existing shingles?',
+        answer:
+          'Often, yes — where structure and code allow. Overlaying saves tear-off labor and keeps asphalt out of the landfill. We will tell you when an overlay is sound and when tear-off is the honest move.',
+      },
+      {
+        question: 'What metal roof profiles do you install on houses?',
+        answer:
+          'Standing seam and lock seam systems with Kynar-coated colors — the profiles that belong on a house, not a barn panel screwed to a residential deck.',
+      },
+      {
+        question: 'Is metal roofing a good fit for Houston heat and DFW hail?',
+        answer:
+          'Metal is a long-lived, reflective option when it is detailed correctly. Energy, hail exposure, and HOA rules all factor in. We will say when metal is the right spend and when a premium shingle still makes more sense for the street.',
+      },
+      {
+        question: 'Are metal roofs recyclable?',
+        answer:
+          'Yes. When a metal roof is finally replaced, the panels recycle. Few residential systems can say the same, which is part of why homeowners choose metal as a lifetime-oriented spec.',
+      },
     ],
   },
   {
@@ -384,6 +528,28 @@ export const services: Service[] = [
       'residential-roof-inspections',
       'residential-home-improvement',
     ],
+    faqs: [
+      {
+        question: 'Do you repair the rooms after you fix the roof leak?',
+        answer:
+          'Yes. A roofing company that walks away after the tarps come off leaves you with stained ceilings and a second contractor. We handle sheetrock, texture matching, paint, and restoration so the leak and the rooms are one schedule.',
+      },
+      {
+        question: 'Can you match existing ceiling texture and paint?',
+        answer:
+          'That is the standard, not an upgrade. Texture matching and paint are where cheap repairs show. We blend the repair into the existing finish instead of leaving a square on the ceiling.',
+      },
+      {
+        question: 'What if the leak damaged more than a ceiling stain?',
+        answer:
+          'We scale from a paint-up to kitchens, baths, flooring, trim, and additions as general contracting. Interior work still waits until the roof above it is actually dry.',
+      },
+      {
+        question: 'Should interior repairs start before the roof is fixed?',
+        answer:
+          'No. Interior work is wasted if the roof still leaks. We sequence the exterior first, then open, dry, and restore the rooms.',
+      },
+    ],
   },
   {
     slug: 'residential-exterior-repairs',
@@ -448,6 +614,28 @@ export const services: Service[] = [
       'residential-interior-repairs',
       'residential-asphalt-shingles',
       'residential-home-improvement',
+    ],
+    faqs: [
+      {
+        question: 'Do you handle siding and gutters as well as the roof?',
+        answer:
+          'Yes. The roof is the cap, not the whole envelope. We install wood, vinyl, and James Hardie siding, 5" and 6" seamless gutters, fascia, soffit, chimney work, and exterior paint so wall caps and roof edges actually meet.',
+      },
+      {
+        question: 'Why do gutters matter for roof leaks?',
+        answer:
+          'Clogged or poorly pitched gutters overflow into fascia and back onto the roof edge. Seamless gutters, sized and tied into downspouts, are often a roof problem wearing a different name.',
+      },
+      {
+        question: 'Can one crew handle storm damage to the whole exterior?',
+        answer:
+          'That is the point. Roof, sheet metal, siding, then paint and gutters — sequenced so the last step is not wrecked by the next trade. Flood and storm rebuilds do not have to be a stack of unrelated bids.',
+      },
+      {
+        question: 'Do you install James Hardie siding in Houston humidity?',
+        answer:
+          'Yes. Fiber cement is a common Houston-area spec. We detail kickout flashing and roof-to-wall junctions so the siding and the roof shed water as one system.',
+      },
     ],
   },
   {
@@ -514,6 +702,28 @@ export const services: Service[] = [
       'residential-exterior-repairs',
       'commercial-leak-detection',
     ],
+    faqs: [
+      {
+        question: 'What is included in a preventative roof maintenance package?',
+        answer:
+          'Flashings secured and sealed, vents and nail heads addressed, missing shingles repaired, and problem areas photographed before they leak. Every visit includes a photo-documented inspection so you know what was done.',
+      },
+      {
+        question: 'Is yearly roof maintenance cheaper than waiting for a leak?',
+        answer:
+          'Almost always. An ounce of prevention is still cheaper than a tear-off — especially once Texas storms and code upgrades enter a replacement. Small visits beat surprise replacements.',
+      },
+      {
+        question: 'Do you clean gutters and cut back trees as part of maintenance?',
+        answer:
+          'Yes, as a Deep Cleaning add-on: debris off the roof, gutters cleared, and limbs cut back from the edge — the stuff that rots edges and overflows into fascia.',
+      },
+      {
+        question: 'Can you keep animals out of the attic?',
+        answer:
+          'The Critter Control Package finds and seals attic entry points, covers vents, and installs custom metal flashing rodents cannot chew through. Wildlife belongs outside.',
+      },
+    ],
   },
   {
     slug: 'commercial-metal-roofing',
@@ -577,6 +787,28 @@ export const services: Service[] = [
       'commercial-roof-repair',
       'commercial-tpo',
     ],
+    faqs: [
+      {
+        question: 'When is commercial metal the right system instead of TPO?',
+        answer:
+          'Commercial metal belongs on sloping structures. We do not force a standing-seam look onto a dead-flat deck that wants TPO. Slope, existing roof, and attachment method decide the spec.',
+      },
+      {
+        question: 'Can commercial metal panels overlay an existing roof?',
+        answer:
+          'Often. Panels are light — frequently under 1.6 pounds per square foot — so they can ride over existing roofing, cutting downtime and disposal. We will not overlay a failed deck just to win the bid.',
+      },
+      {
+        question: 'What metal profiles do you install on commercial buildings?',
+        answer:
+          'Standing seam, lock seam, and industrial metal panel systems, with shop-quality flashing at penetrations, copings, and transitions — the spots commercial metal actually leaks.',
+      },
+      {
+        question: 'Will a metal reroof shut down our operation?',
+        answer:
+          'We plan staging and hours so the roof goes on without shutting the business underneath. That is the same occupancy-first approach we use on commercial repairs.',
+      },
+    ],
   },
   {
     slug: 'commercial-roof-inspection',
@@ -639,6 +871,28 @@ export const services: Service[] = [
       'commercial-roof-repair',
       'commercial-leak-detection',
       'residential-roof-inspections',
+    ],
+    faqs: [
+      {
+        question: 'What does a commercial roof inspection include?',
+        answer:
+          'We inspect the field, perimeters, and penetrations: materials, chimneys, skylights, coping caps, parapet walls, flashings, HVAC curbs, plumbing, scuppers, drains, gutters, and downspouts. Findings go in a PDF with photos and remaining-life notes.',
+      },
+      {
+        question: 'Do you inspect commercial roofs for buyers and lenders?',
+        answer:
+          'Yes. Whether you are buying, selling, appraising, or refinancing, the roof can move the deal. The report is formatted so ownership, a buyer, or a facilities manager can act on it.',
+      },
+      {
+        question: 'Is the inspection tied to a repair estimate?',
+        answer:
+          'If repairs or routine maintenance are needed, they show up next to the photos with a detailed written estimate — not a PDF that sits in a drawer until the next leak.',
+      },
+      {
+        question: 'Why not use a general building inspector for the roof?',
+        answer:
+          'Most general inspectors will not do a thorough commercial roof inspection. Parapets, copings, HVAC curbs, and internal drains are not residential details. We inspect them as a system.',
+      },
     ],
   },
   {
@@ -705,6 +959,28 @@ export const services: Service[] = [
       'commercial-roof-inspection',
       'commercial-tpo',
     ],
+    faqs: [
+      {
+        question: 'Do you offer emergency commercial roof repair in Houston and Fort Worth?',
+        answer:
+          'Yes. Same-day emergency leak service is on the board when water is in the building. Temporary measures stop the leak first; then we diagnose the system and price a lasting repair.',
+      },
+      {
+        question: 'Which commercial roof systems can you repair?',
+        answer:
+          'TPO, EPDM, modified bitumen, built-up, standing seam, tile, elastomeric coatings, and foam — the stack Houston and Fort Worth buildings actually wear. Manufacturer relationships let us meet the building instead of forcing one product.',
+      },
+      {
+        question: 'Can you help with an insurance claim after storm damage?',
+        answer:
+          'Yes. Our insurance-claims staff can help evaluate the property, document the damage, and stay in contact through the project so you are not translating adjuster-speak alone.',
+      },
+      {
+        question: 'Will repairs interrupt our tenants or customers?',
+        answer:
+          'We plan staging, hours, and access so the business keeps operating. Emergency work stops the water; planned replacements are scheduled around occupancy.',
+      },
+    ],
   },
   {
     slug: 'commercial-leak-detection',
@@ -767,6 +1043,28 @@ export const services: Service[] = [
       'commercial-roof-repair',
       'commercial-roof-inspection',
       'commercial-waterproofing',
+    ],
+    faqs: [
+      {
+        question: 'How quickly can you find and stop a commercial roof leak?',
+        answer:
+          'We understand the urgency. Dedicated service crews handle emergency roofing, often the same day, instead of waiting on a residential calendar. Call Katy at 832-321-5088 or Arlington at 817-789-8458 when water is in the building.',
+      },
+      {
+        question: 'Why is the leak not always where the bucket sits?',
+        answer:
+          'On low-slope roofs, water travels. We trace deficiencies on the roof — flashings, seams, drains, penetrations — not just the stain on the ceiling, then document them in a photo report.',
+      },
+      {
+        question: 'Do you work around business hours for leak repairs?',
+        answer:
+          'Yes. We repair low-slope and flat commercial systems on a business schedule so a leak does not have to close the doors.',
+      },
+      {
+        question: 'Should we maintain the roof after the emergency repair?',
+        answer:
+          'Yes. Preventative maintenance can extend — sometimes roughly double — the life of a roof you would otherwise replace, especially once code upgrades enter a reroof. Stopping the leak is step one; keeping the next one from showing up is the cheaper path.',
+      },
     ],
   },
   {
@@ -831,6 +1129,28 @@ export const services: Service[] = [
       'commercial-waterproofing',
       'commercial-roof-repair',
     ],
+    faqs: [
+      {
+        question: 'What is modified bitumen roofing?',
+        answer:
+          'It is a multi-ply commercial membrane built in layers — insulation, ply sheets, a factory-fabricated modified bitumen sheet, adhesive, and UV surfacing. Redundancy you do not get from a single thin sheet, assembled much like a traditional built-up roof with modern materials.',
+      },
+      {
+        question: 'When should a building use modified bitumen instead of TPO?',
+        answer:
+          'When the deck needs puncture resistance and layered redundancy — traffic, equipment, or a history of single-ply failures. We spec the stack for the deck, occupancy, and Texas UV instead of defaulting to whatever is cheapest that week.',
+      },
+      {
+        question: 'Can modified bitumen be installed with low-odor adhesives?',
+        answer:
+          'Hot- or cold-applied assemblies are chosen for the building, occupancy, and odor constraints — not whatever the crew prefers. Occupied buildings often need the colder, lower-odor path.',
+      },
+      {
+        question: 'Where do modified bitumen roofs usually leak?',
+        answer:
+          'At flashings: perimeters, equipment curbs, and penetrations. That is where these systems succeed or fail, and it is where we spend the attention — not just the field membrane.',
+      },
+    ],
   },
   {
     slug: 'commercial-tile',
@@ -893,6 +1213,28 @@ export const services: Service[] = [
       'residential-tile',
       'commercial-roof-repair',
       'commercial-metal-roofing',
+    ],
+    faqs: [
+      {
+        question: 'Do you install tile and slate on commercial buildings?',
+        answer:
+          'Yes. Not every commercial roof is a flat TPO deck. Churches, schools, and offices with steep-slope tile or slate need a specialist for underlayment, flashings, fastening, access, and occupancy.',
+      },
+      {
+        question: 'Can commercial tile be repaired instead of replaced?',
+        answer:
+          'Broken tiles, slipped courses, and failed flashings can often be repaired. We match existing profiles. Failed underlayment or widespread breakage gets an honest replacement number instead of a cheap overlay.',
+      },
+      {
+        question: 'Does tile help with cooling costs on a commercial building?',
+        answer:
+          'Mass and air space in a tile system work as insulation and can lower energy bills. Low maintenance is the operating-cost argument, not just the curb appeal.',
+      },
+      {
+        question: 'Can the building stay open during a tile reroof?',
+        answer:
+          'Often yes. Staging and fall protection are planned for a building that may stay open. We treat commercial tile as occupied work, not a vacant production house.',
+      },
     ],
   },
   {
@@ -957,6 +1299,28 @@ export const services: Service[] = [
       'commercial-leak-detection',
       'commercial-modified-bitumen',
     ],
+    faqs: [
+      {
+        question: 'Can a roof coating replace a full commercial tear-off?',
+        answer:
+          'When the membrane and deck are still candidates, a coating system extends service life without a tear-off. If the deck is failed, we will tell you to replace it — a coating is not a miracle.',
+      },
+      {
+        question: 'Do reflective coatings actually cut cooling costs in Texas?',
+        answer:
+          'White reflective coatings send a large share of solar heat back off the roof. Dark and metal roofs can run extremely hot; a proper cool-roof coating is operating cost, not just a cooler photo.',
+      },
+      {
+        question: 'Which roof types can you coat?',
+        answer:
+          'We work with rubber (including EPDM), TPO, PVC, and asphalt (built-up and SBS) systems, plus decks, stairs, walls, and drainage assemblies that show up as “roof leaks.”',
+      },
+      {
+        question: 'How long does a commercial roof coating last?',
+        answer:
+          'It depends on the substrate and the spec. Many systems can be refreshed years later for a fraction of a full replacement. You leave with a recoating horizon instead of a surprise leak — after repairs, cleaning, and the specified mils actually go on.',
+      },
+    ],
   },
   {
     slug: 'commercial-tpo',
@@ -1019,6 +1383,28 @@ export const services: Service[] = [
       'commercial-modified-bitumen',
       'commercial-waterproofing',
       'commercial-roof-repair',
+    ],
+    faqs: [
+      {
+        question: 'Why is TPO so common on Houston and Fort Worth commercial roofs?',
+        answer:
+          'TPO is a reflective, energy-efficient single-ply well suited to southern climates. White TPO reflects heat so a low-slope roof does not cook the top floor — that is not a green-building extra in Texas, it is how the membrane is supposed to work.',
+      },
+      {
+        question: 'How is TPO attached to the building?',
+        answer:
+          'Fully adhered, mechanically attached, or ballasted — and often a mix. Deck type, wind, and occupancy decide the method. We spec attachment for the building that is already there, not a one-size detail.',
+      },
+      {
+        question: 'Are TPO seams glued or welded?',
+        answer:
+          'Heat-welded. Thermoplastic seams are welded, not taped like many EPDM laps. Done correctly, the seam is as waterproof as the sheet.',
+      },
+      {
+        question: 'Can an existing TPO roof be coated instead of replaced?',
+        answer:
+          'Sometimes. If the sheet and insulation are still candidates, a restoration coating can postpone a tear-off. If welds, insulation, or the deck have failed, replacement is the honest spec — we will say which.',
+      },
     ],
   },
 ];

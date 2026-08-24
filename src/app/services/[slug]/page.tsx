@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { JsonLd } from '@/components/json-ld';
 import { ServiceView } from '@/components/service-view';
 import { categoryMeta, getService, services } from '@/lib/services';
+import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 type PageProps = {
@@ -20,17 +22,12 @@ export async function generateMetadata({
   const service = getService(slug);
   if (!service) return {};
 
-  return {
+  return pageMetadata({
     title: service.metaTitle,
     description: service.metaDescription,
-    openGraph: {
-      title: service.metaTitle,
-      description: service.metaDescription,
-    },
-    alternates: {
-      canonical: `/services/${service.slug}`,
-    },
-  };
+    path: `/services/${service.slug}`,
+    image: service.image,
+  });
 }
 
 export default async function ServicePage({ params }: PageProps) {
@@ -44,51 +41,22 @@ export default async function ServicePage({ params }: PageProps) {
     '@type': 'Service',
     name: service.name,
     description: service.metaDescription,
-    provider: {
-      '@type': 'RoofingContractor',
-      name: site.name,
-      telephone: site.phone,
-      url: site.url,
-    },
+    provider: { '@id': schemaIds.organization },
     areaServed: ['Houston, TX', 'Fort Worth, TX', 'Katy, TX', 'Arlington, TX'],
     url: `${site.url}/services/${service.slug}`,
-  };
-
-  const breadcrumbs = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Services',
-        item: `${site.url}/services`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: category.label,
-        item: `${site.url}/services/${service.category}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
-        name: service.name,
-        item: `${site.url}/services/${service.slug}`,
-      },
-    ],
+    ...(service.image ? { image: `${site.url}${service.image}` } : {}),
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      <JsonLd data={jsonLd} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: category.label, path: `/services/${service.category}` },
+          { name: service.name, path: `/services/${service.slug}` },
+        ])}
       />
       <ServiceView service={service} />
     </>

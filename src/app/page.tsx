@@ -22,12 +22,21 @@ import {
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
+import { FaqList } from '@/components/faq-list';
 import { areaPath, areas } from '@/lib/areas';
+import { homeFaqs } from '@/lib/faqs';
+import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Roofing Contractor Houston & Katy TX | Free Inspections',
-  description: site.description,
+  ...pageMetadata({
+    title: 'Houston & Fort Worth Roofing | Free Inspections',
+    description: site.description,
+    path: '/',
+  }),
+  title: {
+    absolute: `Houston & Fort Worth Roofing | Free Inspections | ${site.name}`,
+  },
 };
 
 const trustItems = [
@@ -42,7 +51,7 @@ export default function HomePage() {
     <>
       <PageHero
         eyebrow="Katy, TX · Houston · Fort Worth"
-        title="Roofing built tough for Texas weather."
+        title="Houston and Fort Worth roofing built tough for Texas weather."
         description="Full-service residential and commercial roofing from a team with deep manufacturer relationships and a straight process — free inspection, honest estimate, solid work."
         size="lg"
       >
@@ -52,7 +61,14 @@ export default function HomePage() {
         <Button
           asChild
           variant="outline"
-          className="h-12 border-white/45 bg-white/10 px-6 text-base font-medium text-white hover:bg-white/20 hover:text-white"
+          className="h-12 border-white/45 bg-white/20 px-6 text-base font-medium text-white hover:bg-white/35 hover:text-white backdrop-blur-md shadow-lg"
+          style={{
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            background:
+              'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.08) 100%)',
+            borderColor: 'rgba(255,255,255,0.35)',
+          }}
         >
           <a href={site.phoneHref}>
             <PhoneIcon className="size-4" />
@@ -247,6 +263,12 @@ export default function HomePage() {
           </FadeIn>
         </div>
       </Section>
+
+      <FaqList
+        faqs={homeFaqs}
+        title="Roofing questions, answered"
+        description="What homeowners and property managers ask before they schedule a free inspection."
+      />
 
       {/* Final CTA */}
       <div className="border-y border-primary/20 bg-primary/10">
