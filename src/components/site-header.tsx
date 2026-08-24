@@ -15,20 +15,60 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { areaPath, areas, areasByRegion } from '@/lib/areas';
+import { areaPath, areasByRegion } from '@/lib/areas';
 import {
   servicePath,
-  services,
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
 import { nav, site } from '@/lib/site';
+
+const mobileNav = nav.filter((item) => item.href !== '/contact');
+
+const mobileServiceLinks = [
+  { href: '/services/residential', label: 'Residential' },
+  { href: '/services/commercial', label: 'Commercial' },
+] as const;
+
+const mobileAreaLinks = [
+  { href: '/areas-served/houston', label: 'Houston' },
+  { href: '/areas-served/fort-worth', label: 'Fort Worth' },
+] as const;
 
 function isNavActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
   const path = href.split('#')[0];
   if (!path || path === '/') return false;
   return pathname === path || pathname.startsWith(`${path}/`);
+}
+
+function MobileSubnav({
+  links,
+  pathname,
+  onNavigate,
+}: {
+  links: ReadonlyArray<{ href: string; label: string }>;
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  return (
+    <div className="ml-3 flex flex-col border-l border-border/70 pl-2">
+      {links.map((link) => (
+        <Link
+          key={link.href}
+          href={link.href}
+          onClick={onNavigate}
+          className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+            pathname === link.href
+              ? 'bg-primary/10 text-primary'
+              : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+          }`}
+        >
+          {link.label}
+        </Link>
+      ))}
+    </div>
+  );
 }
 
 export function SiteHeader() {
@@ -186,7 +226,7 @@ export function SiteHeader() {
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-80">
+            <SheetContent side="right" className="w-80 overflow-y-auto">
               <SheetHeader className="pb-2">
                 <SheetTitle>
                   <SiteLogo className="h-10 w-auto" />
@@ -209,53 +249,34 @@ export function SiteHeader() {
                 </a> */}
               </div>
               <nav className="flex flex-col gap-0.5 px-4 pb-8 pt-4">
-                {nav.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                      isNavActive(pathname, item.href)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground hover:bg-muted'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Services
-                </p>
-                {services.map((service) => (
-                  <Link
-                    key={service.slug}
-                    href={servicePath(service.slug)}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
-                      pathname === servicePath(service.slug)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                    }`}
-                  >
-                    {service.shortName}
-                  </Link>
-                ))}
-                <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Cities
-                </p>
-                {areas.map((area) => (
-                  <Link
-                    key={area.slug}
-                    href={areaPath(area.slug)}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-lg px-3 py-2 text-sm transition-colors ${
-                      pathname === areaPath(area.slug)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                    }`}
-                  >
-                    {area.name}
-                  </Link>
+                {mobileNav.map((item) => (
+                  <div key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                        isNavActive(pathname, item.href)
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.href === '/services' ? (
+                      <MobileSubnav
+                        links={mobileServiceLinks}
+                        pathname={pathname}
+                        onNavigate={() => setOpen(false)}
+                      />
+                    ) : null}
+                    {item.href === '/areas-served' ? (
+                      <MobileSubnav
+                        links={mobileAreaLinks}
+                        pathname={pathname}
+                        onNavigate={() => setOpen(false)}
+                      />
+                    ) : null}
+                  </div>
                 ))}
               </nav>
             </SheetContent>
