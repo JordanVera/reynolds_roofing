@@ -75,6 +75,7 @@ export const services: Service[] = [
     formValue: 'Residential Roof Inspection',
     category: 'residential',
     icon: 'ClipboardCheck',
+    image: '/services/residential/roof-inspections.jpg',
     metaTitle: 'Residential Roof Inspections | Photo Reports & Estimates',
     metaDescription:
       'Professional residential roof inspections in Houston and Fort Worth. PDF reports with photos, life expectancy, and a written repair estimate from Reynolds Roofing TX.',
@@ -137,6 +138,7 @@ export const services: Service[] = [
     formValue: 'Asphalt Shingles',
     category: 'residential',
     icon: 'Home',
+    image: '/services/residential/asphalt-shingles.jpg',
     metaTitle: 'Asphalt Shingle Roofing | Installation & Repair',
     metaDescription:
       'Asphalt shingle installation, repair, and replacement in Houston and Fort Worth. Premium and architectural shingles with manufacturer warranties from Reynolds Roofing TX.',
@@ -199,6 +201,7 @@ export const services: Service[] = [
     formValue: 'Tile & Slate Roofing',
     category: 'residential',
     icon: 'Square',
+    image: '/services/residential/tile-service.jpg',
     metaTitle: 'Tile & Slate Roofing | Installation and Repair',
     metaDescription:
       'Clay, concrete tile, and slate roofing in Houston and Fort Worth. Wind-resistant installation, copper flashings, and low-maintenance systems from Reynolds Roofing TX.',
@@ -261,6 +264,7 @@ export const services: Service[] = [
     formValue: 'Residential Metal Roofing',
     category: 'residential',
     icon: 'Layers',
+    image: '/services/residential/metal-roofing.jpg',
     metaTitle: 'Residential Metal Roofing | Standing Seam & Lock Seam',
     metaDescription:
       'Standing seam and lock seam metal roofs for Houston and Fort Worth homes. Recyclable, long-lived systems that can often go over an existing roof. Reynolds Roofing TX.',
@@ -323,6 +327,7 @@ export const services: Service[] = [
     formValue: 'Interior Repairs',
     category: 'residential',
     icon: 'PaintRoller',
+    image: '/services/residential/interior-repairs.jpg',
     metaTitle: 'Interior Repairs After Roof Leaks | Drywall, Paint & Restore',
     metaDescription:
       'Interior repairs in Houston and Fort Worth — sheetrock, texture matching, painting, and restoration after roof leaks. Reynolds Roofing TX handles the roof and the rooms underneath.',
@@ -387,6 +392,7 @@ export const services: Service[] = [
     formValue: 'Exterior Repairs',
     category: 'residential',
     icon: 'PanelLeft',
+    image: '/services/residential/exterior-repairs.jpg',
     metaTitle: 'Exterior Repairs | Siding, Gutters, Paint & Roof Work',
     metaDescription:
       'Exterior home repairs in Houston and Fort Worth — siding, seamless gutters, fascia, paint, chimneys, and roof work from Reynolds Roofing TX.',
@@ -451,7 +457,9 @@ export const services: Service[] = [
     formValue: 'Home Improvement Package',
     category: 'residential',
     icon: 'Package',
-    metaTitle: 'Roof Maintenance Packages | Preventative Care & Critter Control',
+    image: '/services/residential/home-improvement.jpg',
+    metaTitle:
+      'Roof Maintenance Packages | Preventative Care & Critter Control',
     metaDescription:
       'Preventative roof maintenance, deep cleaning, and critter control packages for Houston and Fort Worth homes. Keep the roof you have. Reynolds Roofing TX.',
     heroTitle: 'Keep the roof you have working longer.',
