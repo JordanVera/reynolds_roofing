@@ -5,6 +5,7 @@ import {
   ClockIcon,
   CheckIcon,
   ShieldCheckIcon,
+  MailIcon,
 } from 'lucide-react';
 
 import { FadeIn } from '@/components/motion';
@@ -110,6 +111,22 @@ export default function ContactPage() {
                   </div>
                 </div>
               ))}
+              <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <MailIcon className="size-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="mt-0.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    {site.email}
+                  </a>
+                </div>
+              </div>
               <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
                 <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
                   <ClockIcon className="size-4 text-primary" />

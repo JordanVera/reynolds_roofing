@@ -19,7 +19,11 @@ export const site = {
   ogImage: '/og.jpg',
   priceRange: '$$',
   googleReviewsUrl,
-  sameAs: [googleReviewsUrl],
+  sameAs: [
+    googleReviewsUrl,
+    'https://www.facebook.com/reynoldsroofingtx',
+    'https://twitter.com/ReynoldsRoofing',
+  ],
   locations: [
     {
       id: 'katy',

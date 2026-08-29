@@ -33,7 +33,7 @@ export default function TestimonialsPage() {
             author: review.name,
             body: review.body,
             rating: review.rating,
-            datePublished: review.year,
+            // Year-only values are invalid ISO dates — omit datePublished.
           })),
         )}
       />

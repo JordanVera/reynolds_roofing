@@ -30,7 +30,15 @@ export const metadata: Metadata = {
   description: site.description,
   icons: {
     icon: [{ url: '/icons/favicon.ico', type: 'image/x-icon' }],
+    apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180' }],
   },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
   openGraph: {
     title: `Houston & Fort Worth Roofing | ${site.name}`,
     description: site.description,
@@ -69,7 +77,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

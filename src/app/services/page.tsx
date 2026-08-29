@@ -17,7 +17,7 @@ import {
   servicesByCategory,
   type ServiceCategory,
 } from '@/lib/services';
-import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, collectionPageJsonLd, pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
@@ -37,6 +37,28 @@ export default function ServicesHubPage() {
           { name: 'Home', path: '/' },
           { name: 'Services', path: '/services' },
         ])}
+      />
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: `Roofing Services | ${site.name}`,
+          description:
+            'Residential and commercial roofing services in Houston and Fort Worth.',
+          path: '/services',
+          items: categories.flatMap((key) => {
+            const category = categoryMeta[key];
+            return [
+              {
+                name: category.name,
+                path: categoryPath(key),
+              },
+              ...servicesByCategory(key).map((service) => ({
+                name: service.name,
+                path: `/services/${service.slug}`,
+                image: service.image,
+              })),
+            ];
+          }),
+        })}
       />
       <PageHero
         eyebrow="Residential · Commercial · Restoration"

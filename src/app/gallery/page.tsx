@@ -11,7 +11,11 @@ import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { LeadForm } from '@/components/lead-form';
 import { galleryItems } from '@/lib/gallery';
-import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
+import {
+  breadcrumbJsonLd,
+  imageGalleryJsonLd,
+  pageMetadata,
+} from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
@@ -30,6 +34,20 @@ export default function GalleryPage() {
           { name: 'Home', path: '/' },
           { name: 'Gallery', path: '/gallery' },
         ])}
+      />
+      <JsonLd
+        data={imageGalleryJsonLd({
+          name: `Project Gallery | ${site.name}`,
+          description:
+            'Roof replacements, leak repairs, storm damage, patio covers, and restoration work across Houston and Fort Worth.',
+          path: '/gallery',
+          images: galleryItems.map((item) => ({
+            name: item.title,
+            src: item.src,
+            width: item.width,
+            height: item.height,
+          })),
+        })}
       />
 
       <PageHero

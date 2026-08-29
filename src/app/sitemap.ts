@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { areas } from '@/lib/areas';
+import { galleryItems } from '@/lib/gallery';
 import { services } from '@/lib/services';
 import { site } from '@/lib/site';
 
@@ -36,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
+      images: galleryItems.map((item) => `${site.url}${item.src}`),
     },
     {
       url: `${site.url}/areas-served`,

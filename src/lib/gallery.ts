@@ -118,7 +118,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: '13',
     src: '/gallery/gallery-13.jpg',
-    title: 'Katy — before roof replacement',
+    title: 'Katy, TX — before roof replacement',
     category: 'roof-installation',
     width: 800,
     height: 450,
@@ -126,7 +126,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: '14',
     src: '/gallery/gallery-14.jpg',
-    title: 'Katy — after roof replacement',
+    title: 'Katy, TX — after roof replacement',
     category: 'roof-installation',
     width: 800,
     height: 450,

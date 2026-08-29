@@ -16,7 +16,7 @@ import {
   regionMeta,
   type ServiceRegion,
 } from '@/lib/areas';
-import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, collectionPageJsonLd, pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
@@ -49,6 +49,20 @@ export default function AreasServedPage() {
           { name: 'Home', path: '/' },
           { name: 'Areas Served', path: '/areas-served' },
         ])}
+      />
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: `Areas Served | ${site.name}`,
+          description:
+            'Roofing service areas across Greater Houston and Dallas–Fort Worth.',
+          path: '/areas-served',
+          items: regions.flatMap(({ key }) =>
+            areasByRegion(key).map((area) => ({
+              name: `${area.name} roofing`,
+              path: areaPath(area.slug),
+            })),
+          ),
+        })}
       />
       <PageHero
         eyebrow="Houston · Fort Worth · Surrounding cities"

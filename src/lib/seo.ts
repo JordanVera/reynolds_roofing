@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { site, type SiteLocation } from '@/lib/site';
+import { testimonials } from '@/lib/testimonials';
 
 export type FaqItem = {
   question: string;
@@ -10,6 +11,19 @@ export type FaqItem = {
 export type BreadcrumbItem = {
   name: string;
   path: string;
+};
+
+export type CollectionListItem = {
+  name: string;
+  path: string;
+  image?: string;
+};
+
+export type GallerySchemaItem = {
+  name: string;
+  src: string;
+  width: number;
+  height: number;
 };
 
 export const schemaIds = {
@@ -36,15 +50,19 @@ export function pageMetadata({
 }): Metadata {
   const canonical = path === '/' ? '/' : path;
   const ogImage = image ?? site.ogImage;
+  // Titles that already include "|" should not get the layout template appended again.
+  const resolvedTitle = title.includes('|')
+    ? { absolute: `${title} | ${site.name}` }
+    : title;
 
   return {
-    title,
+    title: resolvedTitle,
     description,
     alternates: {
       canonical,
     },
     openGraph: {
-      title,
+      title: typeof resolvedTitle === 'string' ? resolvedTitle : resolvedTitle.absolute,
       description,
       url: absoluteUrl(canonical),
       type: 'website',
@@ -61,7 +79,7 @@ export function pageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: typeof resolvedTitle === 'string' ? resolvedTitle : resolvedTitle.absolute,
       description,
       images: [ogImage],
     },
@@ -96,10 +114,26 @@ export function breadcrumbJsonLd(items: BreadcrumbItem[]) {
   };
 }
 
+/** Aggregate rating from reviews published on-site (honest reviewCount). */
+export function aggregateRatingFromTestimonials() {
+  const count = testimonials.length;
+  const sum = testimonials.reduce((total, review) => total + review.rating, 0);
+  const ratingValue = Math.round((sum / count) * 10) / 10;
+
+  return {
+    '@type': 'AggregateRating' as const,
+    ratingValue,
+    reviewCount: count,
+    bestRating: 5,
+    worstRating: 1,
+  };
+}
+
 export type ReviewSchemaItem = {
   author: string;
   body: string;
   rating: number;
+  /** Full ISO date only — omit year-only strings. */
   datePublished?: string;
 };
 
@@ -129,11 +163,85 @@ export function reviewsJsonLd(reviews: ReviewSchemaItem[]) {
           },
           publisher: { '@type': 'Organization', name: 'Google' },
           itemReviewed: { '@id': schemaIds.organization },
-          ...(review.datePublished
+          ...(review.datePublished && /^\d{4}-\d{2}-\d{2}/.test(review.datePublished)
             ? { datePublished: review.datePublished }
             : {}),
         },
       })),
     },
+  };
+}
+
+export function collectionPageJsonLd({
+  name,
+  description,
+  path,
+  items,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  items: CollectionListItem[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': absoluteUrl(path),
+    name,
+    description,
+    url: absoluteUrl(path),
+    isPartOf: { '@id': schemaIds.website },
+    about: { '@id': schemaIds.organization },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        url: absoluteUrl(item.path),
+        ...(item.image
+          ? {
+              item: {
+                '@type': 'Thing',
+                name: item.name,
+                url: absoluteUrl(item.path),
+                image: absoluteUrl(item.image),
+              },
+            }
+          : {}),
+      })),
+    },
+  };
+}
+
+export function imageGalleryJsonLd({
+  name,
+  description,
+  path,
+  images,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  images: GallerySchemaItem[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    '@id': absoluteUrl(path),
+    name,
+    description,
+    url: absoluteUrl(path),
+    isPartOf: { '@id': schemaIds.website },
+    about: { '@id': schemaIds.organization },
+    associatedMedia: images.map((image) => ({
+      '@type': 'ImageObject',
+      name: image.name,
+      contentUrl: absoluteUrl(image.src),
+      url: absoluteUrl(image.src),
+      width: image.width,
+      height: image.height,
+    })),
   };
 }

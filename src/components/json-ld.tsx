@@ -1,5 +1,9 @@
 import { areas } from '@/lib/areas';
-import { absoluteUrl, schemaIds } from '@/lib/seo';
+import {
+  absoluteUrl,
+  aggregateRatingFromTestimonials,
+  schemaIds,
+} from '@/lib/seo';
 import { site, type SiteLocation } from '@/lib/site';
 
 export function JsonLd({ data }: { data: object }) {
@@ -34,6 +38,7 @@ function openingHours() {
 function officeNode(location: SiteLocation) {
   const region = location.id === 'katy' ? 'houston' : 'dfw';
   const served = areas.filter((area) => area.region === region);
+  const aggregateRating = aggregateRatingFromTestimonials();
 
   return {
     '@type': 'RoofingContractor',
@@ -61,10 +66,13 @@ function officeNode(location: SiteLocation) {
       addressCountry: 'US',
     })),
     openingHoursSpecification: openingHours(),
+    aggregateRating,
   };
 }
 
 export function LocalBusinessJsonLd() {
+  const aggregateRating = aggregateRatingFromTestimonials();
+
   const data = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -81,6 +89,7 @@ export function LocalBusinessJsonLd() {
         logo: absoluteUrl(site.logo),
         image: absoluteUrl(site.ogImage),
         ...(site.sameAs.length > 0 ? { sameAs: [...site.sameAs] } : {}),
+        aggregateRating,
         subOrganization: site.locations.map((location) => ({
           '@id': schemaIds.office(location.id),
         })),

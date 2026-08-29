@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MapPinIcon, PhoneIcon, ShieldCheckIcon } from 'lucide-react';
+import { MailIcon, MapPinIcon, PhoneIcon, ShieldCheckIcon } from 'lucide-react';
 
 import { SiteLogo } from '@/components/site-logo';
 import { Separator } from '@/components/ui/separator';
@@ -43,6 +43,13 @@ export function SiteFooter() {
             >
               <PhoneIcon className="size-4 shrink-0 text-primary" />
               {site.phone}
+            </a>
+            <a
+              href={`mailto:${site.email}`}
+              className="flex items-center gap-2 font-semibold text-foreground transition-colors hover:text-primary"
+            >
+              <MailIcon className="size-4 shrink-0 text-primary" />
+              {site.email}
             </a>
             {site.locations.map((loc) => (
               <div key={loc.city} className="flex items-start gap-2 text-muted-foreground">
