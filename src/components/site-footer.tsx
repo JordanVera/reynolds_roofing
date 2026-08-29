@@ -101,6 +101,7 @@ export function SiteFooter() {
             {[
               { href: '/', label: 'Home' },
               { href: '/services', label: 'Services' },
+              { href: '/gallery', label: 'Gallery' },
               { href: '/about', label: 'About' },
               { href: '/testimonials', label: 'Testimonials' },
               { href: '/areas-served', label: 'Areas Served' },

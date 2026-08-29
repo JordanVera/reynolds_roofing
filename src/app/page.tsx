@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   PhoneIcon,
@@ -26,6 +27,7 @@ import {
 } from '@/lib/services';
 import { FaqList } from '@/components/faq-list';
 import { areaPath, areas } from '@/lib/areas';
+import { featuredGalleryItems } from '@/lib/gallery';
 import { homeFaqs } from '@/lib/faqs';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
@@ -224,6 +226,48 @@ export default function HomePage() {
         <div className="mt-8 text-center">
           <Button asChild variant="outline">
             <Link href="/areas-served">View all service areas</Link>
+          </Button>
+        </div>
+      </Section>
+
+      <Section className="bg-card/20">
+        <SectionHeading
+          eyebrow="Project gallery"
+          title="Roofs we have already finished"
+          description="Replacements, repairs, leak work, and restoration from jobs across Houston and Fort Worth. Open the full gallery for every photo."
+        />
+        <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          {featuredGalleryItems.map((item, index) => (
+            <StaggerItem
+              key={item.id}
+              className={index === 0 || index === 5 ? 'md:col-span-2' : undefined}
+            >
+              <Link
+                href="/gallery"
+                className="group relative block aspect-4/3 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  sizes={
+                    index === 0 || index === 5
+                      ? '(max-width: 768px) 50vw, 50vw'
+                      : '(max-width: 768px) 50vw, 25vw'
+                  }
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
+                <p className="absolute inset-x-0 bottom-0 truncate p-3 text-left text-xs font-medium text-white md:p-4 md:text-sm">
+                  {item.title}
+                </p>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline">
+            <Link href="/gallery">View full gallery</Link>
           </Button>
         </div>
       </Section>

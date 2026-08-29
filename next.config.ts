@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         destination: '/about',
         permanent: true,
       },
+      {
+        source: '/gallery.html',
+        destination: '/gallery',
+        permanent: true,
+      },
     ];
   },
 };
