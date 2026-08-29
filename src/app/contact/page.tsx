@@ -17,6 +17,7 @@ import { Section } from '@/components/section';
 import { Badge } from '@/components/ui/badge';
 import { LeadForm } from '@/components/lead-form';
 import { contactFaqs } from '@/lib/faqs';
+import { resolveFormService } from '@/lib/services';
 import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
 import { site } from '@/lib/site';
 
@@ -33,7 +34,13 @@ const trustPoints = [
   'Licensed and insured crew',
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string | string[] }>;
+}) {
+  const { service } = await searchParams;
+  const defaultService = resolveFormService(service);
   return (
     <>
       <JsonLd
@@ -70,10 +77,12 @@ export default function ContactPage() {
               <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
                 Houston &amp; Fort Worth
               </Badge>
-              <h2 className="font-heading text-2xl font-bold tracking-tight">Get in touch</h2>
+              <h2 className="font-heading text-2xl font-bold tracking-tight">
+                Get in touch
+              </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Most calls are answered same day. Form submissions receive a response by next
-                business morning.
+                Most calls are answered same day. Form submissions receive a
+                response by next business morning.
               </p>
             </div>
 
@@ -162,20 +171,26 @@ export default function ContactPage() {
             className="rounded-2xl border border-border bg-card p-6 shadow-sm md:p-8"
           >
             <div className="mb-6">
-              <h2 className="font-heading text-xl font-bold">Request your free inspection</h2>
+              <h2 className="font-heading text-xl font-bold">
+                Request your free inspection
+              </h2>
               <p className="mt-1.5 text-sm text-muted-foreground">
-                Fill in the form and we will reach out to schedule — usually same afternoon.
+                Fill in the form and we will reach out to schedule — usually
+                same afternoon.
               </p>
               <div className="mt-4 space-y-1.5">
                 {trustPoints.map((p) => (
-                  <div key={p} className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <div
+                    key={p}
+                    className="flex items-center gap-2 text-xs text-muted-foreground"
+                  >
                     <CheckIcon className="size-3.5 shrink-0 text-primary" />
                     {p}
                   </div>
                 ))}
               </div>
             </div>
-            <LeadForm />
+            <LeadForm defaultService={defaultService} />
           </FadeIn>
         </div>
       </Section>

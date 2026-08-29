@@ -26,8 +26,8 @@ export const site = {
   ],
   locations: [
     {
-      id: 'katy',
-      city: 'Katy',
+      id: 'houston',
+      city: 'Houston',
       state: 'TX',
       address: '20501 Katy Freeway #203',
       zip: '77450',
@@ -37,8 +37,8 @@ export const site = {
         'https://www.google.com/maps/search/?api=1&query=20501+Katy+Freeway+%23203+Katy+TX+77450',
     },
     {
-      id: 'arlington',
-      city: 'Arlington',
+      id: 'Fort Worth',
+      city: 'Fort Worth',
       state: 'TX',
       address: '4840 Matlock Rd., Ste. D110',
       zip: '76018',
@@ -65,6 +65,15 @@ export const site = {
 } as const;
 
 export type SiteLocation = (typeof site.locations)[number];
+
+export function telHref(phone: string) {
+  return `tel:+1${phone.replace(/\D/g, '')}`;
+}
+
+export function estimatePath(service?: string) {
+  if (!service) return '/contact';
+  return `/contact?service=${encodeURIComponent(service)}`;
+}
 
 export const formsubmitEndpoint = `https://formsubmit.co/${site.email}`;
 

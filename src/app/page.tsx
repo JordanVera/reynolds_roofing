@@ -3,34 +3,30 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   PhoneIcon,
-  ShieldCheckIcon,
-  CheckCircleIcon,
   MapPinIcon,
-  ClockIcon,
+  Building2Icon,
+  CalendarIcon,
+  HardHatIcon,
   StarIcon,
 } from 'lucide-react';
 
 import { FadeIn, Stagger, StaggerItem } from '@/components/motion';
 import { GoogleIcon } from '@/components/google-icon';
+import { HomeIntentTiles } from '@/components/home-intent-tiles';
+import { HomeProcess } from '@/components/home-process';
+import { HomeServiceSplit } from '@/components/home-service-split';
 import { PageHero } from '@/components/page-hero';
 import { Section, SectionHeading } from '@/components/section';
-import { ServiceCard } from '@/components/service-card';
 import { TestimonialCard } from '@/components/testimonial-card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { LeadForm } from '@/components/lead-form';
-import {
-  categoryMeta,
-  categoryPath,
-  servicesByCategory,
-  type ServiceCategory,
-} from '@/lib/services';
 import { FaqList } from '@/components/faq-list';
 import { areaPath, areas } from '@/lib/areas';
 import { featuredGalleryItems } from '@/lib/gallery';
 import { homeFaqs } from '@/lib/faqs';
 import { pageMetadata } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { site, telHref } from '@/lib/site';
 import { featuredTestimonials } from '@/lib/testimonials';
 
 export const metadata: Metadata = {
@@ -44,92 +40,77 @@ export const metadata: Metadata = {
   },
 };
 
-const trustItems = [
-  { icon: ShieldCheckIcon, label: 'Licensed & Insured' },
-  { icon: CheckCircleIcon, label: 'Free Inspections' },
-  { icon: MapPinIcon, label: 'Houston + Fort Worth' },
-  { icon: ClockIcon, label: 'Fast Response' },
-];
+const heroOutlineClass =
+  'h-12 border-white/45 bg-white/20 px-6 text-base font-medium text-white hover:bg-white/35 hover:text-white backdrop-blur-md shadow-lg';
+
+const heroOutlineStyle = {
+  backdropFilter: 'blur(8px)',
+  WebkitBackdropFilter: 'blur(8px)',
+  background:
+    'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.08) 100%)',
+  borderColor: 'rgba(255,255,255,0.35)',
+} as const;
+
+const heroProof = [
+  { icon: CalendarIcon, label: `Since ${site.founded}` },
+  { icon: HardHatIcon, label: '50+ years combined' },
+  { icon: Building2Icon, label: 'Katy + Arlington offices' },
+] as const;
 
 export default function HomePage() {
   return (
     <>
       <PageHero
         eyebrow="Katy, TX · Houston · Fort Worth"
-        title="Houston and Fort Worth roofing built tough for Texas weather."
-        description="Full-service residential and commercial roofing from a team with deep manufacturer relationships and a straight process — free inspection, honest estimate, solid work."
+        title="Same-week roof inspections for Houston and Fort Worth."
+        description="Free walk-through and a written estimate from the Katy and Arlington offices. You decide whether to repair or replace — no pressure on the roof."
         size="lg"
+        trustRow={
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/15 pt-8">
+            {heroProof.map((item) => (
+              <p
+                key={item.label}
+                className="flex items-center gap-2 text-sm font-medium text-white/90"
+              >
+                <item.icon className="size-4 shrink-0 text-primary" />
+                {item.label}
+              </p>
+            ))}
+            <a
+              href={site.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+            >
+              <GoogleIcon className="size-4" />
+              <StarIcon className="size-3.5 fill-amber-400 text-amber-400" />
+              5-star Google reviews
+            </a>
+          </div>
+        }
       >
         <Button asChild className="h-12 px-6 text-base font-semibold">
           <Link href="/contact">Get a free estimate</Link>
         </Button>
-        <Button
-          asChild
-          variant="outline"
-          className="h-12 border-white/45 bg-white/20 px-6 text-base font-medium text-white hover:bg-white/35 hover:text-white backdrop-blur-md shadow-lg"
-          style={{
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            background:
-              'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.08) 100%)',
-            borderColor: 'rgba(255,255,255,0.35)',
-          }}
-        >
-          <a href={site.phoneHref}>
-            <PhoneIcon className="size-4" />
-            {site.phone}
-          </a>
-        </Button>
+        {site.locations.map((location) => (
+          <Button
+            key={location.id}
+            asChild
+            variant="outline"
+            className={heroOutlineClass}
+            style={heroOutlineStyle}
+          >
+            <a href={telHref(location.phone)}>
+              <PhoneIcon className="size-4" />
+              {location.city} · {location.phone}
+            </a>
+          </Button>
+        ))}
       </PageHero>
 
-      {/* Trust bar */}
-      <div className="border-b border-border bg-card/60">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-5 md:px-6">
-          {trustItems.map((item) => (
-            <div
-              key={item.label}
-              className="flex items-center gap-2 text-sm font-medium"
-            >
-              <item.icon className="size-4 shrink-0 text-primary" />
-              {item.label}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {(['residential', 'commercial'] as ServiceCategory[]).map((key) => {
-        const category = categoryMeta[key];
-        const items = servicesByCategory(key);
-        return (
-          <Section
-            key={key}
-            id={key === 'residential' ? 'services' : undefined}
-            className={
-              key === 'residential' ? 'bg-card/20 texas-grid' : undefined
-            }
-          >
-            <SectionHeading
-              eyebrow={category.label}
-              title={category.name}
-              description={category.heroDescription}
-            />
-            <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {items.map((service) => (
-                <StaggerItem key={service.slug}>
-                  <ServiceCard service={service} />
-                </StaggerItem>
-              ))}
-            </Stagger>
-            <div className="mt-8 text-center">
-              <Button asChild variant="outline">
-                <Link href={categoryPath(key)}>
-                  View {category.label.toLowerCase()} services
-                </Link>
-              </Button>
-            </div>
-          </Section>
-        );
-      })}
+      <HomeIntentTiles />
+      <HomeProcess />
+      <HomeServiceSplit />
 
       {/* About */}
       <Section id="about">
@@ -237,7 +218,7 @@ export default function HomePage() {
           description="Replacements, repairs, leak work, and restoration from jobs across Houston and Fort Worth. Open the full gallery for every photo."
         />
         <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {featuredGalleryItems.map((item, index) => (
+          {featuredGalleryItems.map((item) => (
             <StaggerItem key={item.id}>
               <Link
                 href="/gallery"

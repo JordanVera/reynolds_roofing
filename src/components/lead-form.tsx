@@ -58,7 +58,11 @@ export function LeadForm({
         <Input id="zip" name="zip" required autoComplete="postal-code" className="h-11" />
       </Field>
       <Field label="Service needed" htmlFor="service">
-        <Select name="service" defaultValue={defaultService ?? ''} required>
+        <Select
+          name="service"
+          required
+          {...(defaultService ? { defaultValue: defaultService } : {})}
+        >
           <SelectTrigger id="service" className="h-11 w-full">
             <SelectValue placeholder="Choose a service" />
           </SelectTrigger>

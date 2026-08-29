@@ -1413,6 +1413,14 @@ export function getService(slug: string) {
   return services.find((service) => service.slug === slug);
 }
 
+export function resolveFormService(value: string | string[] | undefined) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  if (!raw) return undefined;
+  return services.some((service) => service.formValue === raw)
+    ? raw
+    : undefined;
+}
+
 export function servicesByCategory(category: ServiceCategory) {
   return services.filter((service) => service.category === category);
 }
