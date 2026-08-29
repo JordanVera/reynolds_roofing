@@ -238,10 +238,7 @@ export default function HomePage() {
         />
         <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           {featuredGalleryItems.map((item, index) => (
-            <StaggerItem
-              key={item.id}
-              className={index === 0 || index === 5 ? 'md:col-span-2' : undefined}
-            >
+            <StaggerItem key={item.id}>
               <Link
                 href="/gallery"
                 className="group relative block aspect-4/3 overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -250,11 +247,7 @@ export default function HomePage() {
                   src={item.src}
                   alt={item.title}
                   fill
-                  sizes={
-                    index === 0 || index === 5
-                      ? '(max-width: 768px) 50vw, 50vw'
-                      : '(max-width: 768px) 50vw, 25vw'
-                  }
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
