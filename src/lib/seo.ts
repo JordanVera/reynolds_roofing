@@ -29,7 +29,8 @@ export type GallerySchemaItem = {
 export const schemaIds = {
   organization: `${site.url}/#organization`,
   website: `${site.url}/#website`,
-  office: (id: SiteLocation['id']) => `${site.url}/#office-${id}`,
+  office: (id: SiteLocation['id']) =>
+    `${site.url}/#office-${id.toLowerCase().replace(/\s+/g, '-')}`,
 } as const;
 
 export function absoluteUrl(path: string) {
@@ -62,7 +63,10 @@ export function pageMetadata({
       canonical,
     },
     openGraph: {
-      title: typeof resolvedTitle === 'string' ? resolvedTitle : resolvedTitle.absolute,
+      title:
+        typeof resolvedTitle === 'string'
+          ? resolvedTitle
+          : resolvedTitle.absolute,
       description,
       url: absoluteUrl(canonical),
       type: 'website',
@@ -79,7 +83,10 @@ export function pageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: typeof resolvedTitle === 'string' ? resolvedTitle : resolvedTitle.absolute,
+      title:
+        typeof resolvedTitle === 'string'
+          ? resolvedTitle
+          : resolvedTitle.absolute,
       description,
       images: [ogImage],
     },
@@ -163,7 +170,8 @@ export function reviewsJsonLd(reviews: ReviewSchemaItem[]) {
           },
           publisher: { '@type': 'Organization', name: 'Google' },
           itemReviewed: { '@id': schemaIds.organization },
-          ...(review.datePublished && /^\d{4}-\d{2}-\d{2}/.test(review.datePublished)
+          ...(review.datePublished &&
+          /^\d{4}-\d{2}-\d{2}/.test(review.datePublished)
             ? { datePublished: review.datePublished }
             : {}),
         },

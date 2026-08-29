@@ -35,9 +35,17 @@ function openingHours() {
   }));
 }
 
+function officeRegion(location: SiteLocation) {
+  switch (location.id) {
+    case 'houston':
+      return 'houston' as const;
+    case 'Fort Worth':
+      return 'dfw' as const;
+  }
+}
+
 function officeNode(location: SiteLocation) {
-  const region = location.id === 'katy' ? 'houston' : 'dfw';
-  const served = areas.filter((area) => area.region === region);
+  const served = areas.filter((area) => area.region === officeRegion(location));
   const aggregateRating = aggregateRatingFromTestimonials();
 
   return {
