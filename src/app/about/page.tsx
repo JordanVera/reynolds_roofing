@@ -22,12 +22,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LeadForm } from '@/components/lead-form';
 import { aboutFaqs } from '@/lib/faqs';
 import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { office, site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Texas Roofing Since 2006',
   description:
-    'Reynolds Roofing TX was founded in Spring 2006 in Katy, with an Arlington office for Fort Worth. Full-service residential and commercial roofing, remodeling trades, and 50+ years of combined experience.',
+    'Reynolds Roofing TX was founded in Spring 2006 in Katy. Full-service residential and commercial roofing, remodeling trades, and 50+ years of combined experience.',
   path: '/about',
 });
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow={`Founded ${site.foundedLabel} · Katy, TX`}
         title="A full-service roofing company that grew up in Texas."
-        description="Reynolds Roofing TX started as a roofing outfit with a simple brief: the highest customer service and craftsmanship we could deliver. Two decades on, we still run that way — from the Katy office and the Arlington shop."
+        description="Reynolds Roofing TX started as a roofing outfit with a simple brief: the highest customer service and craftsmanship we could deliver. Two decades on, we still run that way from the Katy office."
         compact
       >
         <Button asChild className="h-12 px-6 text-base font-semibold">
@@ -125,8 +125,8 @@ export default function AboutPage() {
             {[
               { label: 'Founded', value: site.foundedLabel },
               { label: 'Combined experience', value: '50+ years' },
-              { label: 'Corporate office', value: 'Katy, TX' },
-              { label: 'DFW office', value: 'Arlington, TX' },
+              { label: 'Office', value: 'Katy, TX' },
+              { label: 'Service area', value: 'Greater Houston' },
             ].map((item) => (
               <div
                 key={item.label}
@@ -148,57 +148,33 @@ export default function AboutPage() {
           title="Roofing first. Trades when the house needs them."
           description="We were founded as a full-service roofing company. We have grown into a remodeling outfit that can handle the interior and exterior work a leak — or a renovation — actually requires."
         />
-        <div className="grid gap-6 lg:grid-cols-2">
-          <FadeIn>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">
-                  Corporate office in Katy
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                <p>
-                  Our home office sits at {site.locations[0].address} in Katy,
-                  serving Houston, Fort Bend, and the west-side communities
-                  around it. That is where residential and commercial work for
-                  the Greater Houston area is dispatched.
-                </p>
-                <p>
-                  Founded as roofing, we now take on the trades around the roof
-                  — siding, gutters, interior restoration, and the packages that
-                  keep a system from failing early. Visit{' '}
-                  <Link
-                    href="/services"
-                    className="font-medium text-foreground underline-offset-4 hover:underline"
-                  >
-                    Services
-                  </Link>{' '}
-                  for the full list.
-                </p>
-              </CardContent>
-            </Card>
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">
-                  Arlington office for Fort Worth
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                <p>
-                  The DFW shop is at {site.locations[1].address} in Arlington —
-                  not a PO box. Fort Worth, Arlington, and Benbrook work runs
-                  from that office on {site.locations[1].phone}.
-                </p>
-                <p>
-                  Same licensed standard as Katy. Same process: inspect,
-                  document, estimate, then do the work. Two metros, one company.
-                </p>
-              </CardContent>
-            </Card>
-          </FadeIn>
-        </div>
+        <FadeIn className="max-w-3xl">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Home office in Katy</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                Our office sits at {office.address} in Katy, serving Houston,
+                Fort Bend, and the west-side communities around it. That is
+                where residential and commercial work for the Greater Houston
+                area is dispatched.
+              </p>
+              <p>
+                Founded as roofing, we now take on the trades around the roof —
+                siding, gutters, interior restoration, and the packages that
+                keep a system from failing early. Visit{' '}
+                <Link
+                  href="/services"
+                  className="font-medium text-foreground underline-offset-4 hover:underline"
+                >
+                  Services
+                </Link>{' '}
+                for the full list.
+              </p>
+            </CardContent>
+          </Card>
+        </FadeIn>
       </Section>
 
       <Section>
@@ -230,52 +206,47 @@ export default function AboutPage() {
 
       <Section className="bg-card/30">
         <SectionHeading
-          eyebrow="Offices"
+          eyebrow="Office"
           title="Where to find us"
-          description="Call the office that covers your metro. Both locations take inspection requests the same way."
+          description="Call the Katy office to schedule a free inspection."
         />
-        <div className="grid gap-5 sm:grid-cols-2">
-          {site.locations.map((loc) => (
-            <div
-              key={loc.city}
-              className="rounded-2xl border border-border bg-card p-6"
-            >
-              <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
-                {loc.city} office
-              </Badge>
-              <div className="flex items-start gap-3">
-                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
-                <div>
-                  <p className="text-sm font-bold">
-                    {loc.city}, {loc.state}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {loc.address}, {loc.zip}
-                  </p>
-                  <a
-                    href={`tel:+1${loc.phone.replace(/\D/g, '')}`}
-                    className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-primary"
-                  >
-                    <PhoneIcon className="size-3.5" />
-                    {loc.phone}
-                  </a>
-                </div>
+        <div className="max-w-lg">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
+              Katy office
+            </Badge>
+            <div className="flex items-start gap-3">
+              <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+              <div>
+                <p className="text-sm font-bold">
+                  {office.city}, {office.state}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {office.address}, {office.zip}
+                </p>
+                <a
+                  href={site.phoneHref}
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-primary"
+                >
+                  <PhoneIcon className="size-3.5" />
+                  {office.phone}
+                </a>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground">
-                {site.hours.weekdays}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {site.hours.weekend}
-              </p>
             </div>
-          ))}
+            <p className="mt-4 text-sm text-muted-foreground">
+              {site.hours.weekdays}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {site.hours.weekend}
+            </p>
+          </div>
         </div>
       </Section>
 
       <FaqList
         faqs={aboutFaqs}
         title="About Reynolds Roofing TX"
-        description="Who we are, where we work, and how the two offices split Houston and Fort Worth."
+        description="Who we are, where we work, and how the Katy office covers Greater Houston."
       />
 
       <Section className="bg-card/30 stripe-pattern">
@@ -300,7 +271,7 @@ export default function AboutPage() {
               {[
                 'Free inspection and written estimate',
                 'Licensed and insured crews',
-                'Katy and Arlington offices',
+                'Dispatched from the Katy office',
               ].map((point) => (
                 <div
                   key={point}

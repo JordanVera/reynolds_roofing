@@ -20,7 +20,7 @@ import { testimonials } from '@/lib/testimonials';
 export const metadata: Metadata = pageMetadata({
   title: 'Google Reviews & Testimonials',
   description:
-    'Read 5-star Google reviews from Houston and Fort Worth homeowners who hired Reynolds Roofing TX — then open Google to see every review.',
+    'Read 5-star Google reviews from Houston homeowners who hired Reynolds Roofing TX — then open Google to see every review.',
   path: '/testimonials',
 });
 

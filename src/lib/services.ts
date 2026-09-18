@@ -43,21 +43,21 @@ export const categoryMeta: Record<
     label: 'Residential',
     metaTitle: 'Residential Roofing | Inspections, Shingles, Metal & Tile',
     metaDescription:
-      'Residential roofing in Houston and Fort Worth from Reynolds Roofing TX — inspections, asphalt shingles, tile, metal, interior and exterior repairs, and maintenance packages.',
+      'Residential roofing in Houston from Reynolds Roofing TX — inspections, asphalt shingles, tile, metal, interior and exterior repairs, and maintenance packages.',
     heroTitle: 'Residential roofing built for Texas homes.',
     heroDescription:
       'Every house presents its own roof. We inspect, repair, and replace residential systems — then handle the interior and exterior work a leak leaves behind.',
     intro: [
-      'Reynolds Roofing TX handles residential roofing and home improvement from the Katy and Arlington offices. Regardless of the condition of the existing roof, we will give you a straight path: repair, maintain, or replace.',
+      'Reynolds Roofing TX handles residential roofing and home improvement from the Katy office. Regardless of the condition of the existing roof, we will give you a straight path: repair, maintain, or replace.',
       'Residential roofs are not interchangeable. Slope, ventilation, HOA rules, and the last storm all change the spec. We install and repair asphalt, tile, slate, and metal systems, and we stay on the job for the interior and exterior work that follows a leak.',
       'Whether you are buying, selling, appraising, or renovating, the condition of the roof can change the deal. A dedicated inspection is the right first step — not a glance from the driveway.',
     ],
     faqs: [
       {
         question:
-          'What residential roofing services do you offer in Houston and Fort Worth?',
+          'What residential roofing services do you offer in Houston?',
         answer:
-          'Reynolds Roofing TX inspects, repairs, and replaces residential roofs from the Katy and Arlington offices — asphalt shingles, tile, slate, and metal, plus the interior and exterior work a leak leaves behind. We also run preventative maintenance packages so a small issue does not become a tear-off.',
+          'Reynolds Roofing TX inspects, repairs, and replaces residential roofs from the Katy office — asphalt shingles, tile, slate, and metal, plus the interior and exterior work a leak leaves behind. We also run preventative maintenance packages so a small issue does not become a tear-off.',
       },
       {
         question:
@@ -68,7 +68,7 @@ export const categoryMeta: Record<
       {
         question: 'Do you work with HOA architectural rules?',
         answer:
-          'Yes. Many Houston-area and DFW communities have color, profile, and material standards. We spec manufacturer systems that meet the look the neighborhood expects without cutting corners on underlayment, fastening, or ventilation.',
+          'Yes. Many Houston-area communities have color, profile, and material standards. We spec manufacturer systems that meet the look the neighborhood expects without cutting corners on underlayment, fastening, or ventilation.',
       },
       {
         question: 'Are residential inspections free?',
@@ -83,12 +83,12 @@ export const categoryMeta: Record<
     label: 'Commercial',
     metaTitle: 'Commercial Roofing | TPO, Metal, Repair & Inspections',
     metaDescription:
-      'Commercial and industrial roofing in Houston and Fort Worth — inspections, leak response, TPO, modified bitumen, metal, tile, and waterproofing from Reynolds Roofing TX.',
+      'Commercial and industrial roofing in Houston — inspections, leak response, TPO, modified bitumen, metal, tile, and waterproofing from Reynolds Roofing TX.',
     heroTitle: 'Commercial roofing with less downtime.',
     heroDescription:
       'Quality workmanship on a business schedule. We inspect, repair, and replace commercial systems so a leak does not shut the doors.',
     intro: [
-      'Reynolds Roofing TX handles commercial and industrial roofing from the same two Texas offices that run residential work. Commercial roofs are unique — low slope, HVAC penetrations, parapets, and occupied buildings all change the job.',
+      'Reynolds Roofing TX handles commercial and industrial roofing from the Katy office. Commercial roofs are unique — low slope, HVAC penetrations, parapets, and occupied buildings all change the job.',
       'We determine the general condition of the roof, its remaining life, and the maintenance or repairs that actually matter. Manufacturer relationships give us the flexibility to spec TPO, modified bitumen, metal, tile, coatings, and the rest of the commercial stack without forcing one product.',
       'When a roof leaks, the clock is running. We treat commercial leak calls as urgent work and plan replacements so they interfere as little as possible with the business underneath.',
     ],
@@ -96,7 +96,7 @@ export const categoryMeta: Record<
       {
         question: 'What commercial roofing systems do you install?',
         answer:
-          'We spec TPO, modified bitumen, metal, tile, coatings, and related commercial assemblies from the same Katy and Arlington offices that run residential work. Manufacturer relationships let us match the deck instead of forcing one product on every building.',
+          'We spec TPO, modified bitumen, metal, tile, coatings, and related commercial assemblies from the Katy office that runs residential work. Manufacturer relationships let us match the deck instead of forcing one product on every building.',
       },
       {
         question:
@@ -111,9 +111,9 @@ export const categoryMeta: Record<
       },
       {
         question:
-          'How fast do you respond to a commercial leak in Houston or Fort Worth?',
+          'How fast do you respond to a commercial leak in Houston?',
         answer:
-          'Same-day emergency leak service is on the board when water is in the building. Call the Katy office at 832-321-5088 or the Arlington office at 817-789-8458 and we will get a crew moving.',
+          'Same-day emergency leak service is on the board when water is in the building. Call the Katy office at 832-321-5088 and we will get a crew moving.',
       },
     ],
   },
@@ -130,7 +130,7 @@ export const services: Service[] = [
     image: '/services/residential/roof-inspections.jpg',
     metaTitle: 'Residential Roof Inspections | Photo Reports & Estimates',
     metaDescription:
-      'Professional residential roof inspections in Houston and Fort Worth. PDF reports with photos, life expectancy, and a written repair estimate from Reynolds Roofing TX.',
+      'Professional residential roof inspections in Houston. PDF reports with photos, life expectancy, and a written repair estimate from Reynolds Roofing TX.',
     heroTitle: 'A roof inspection that actually gets on the roof.',
     heroDescription:
       'Buying, selling, or just overdue for a look. We document condition, remaining life, and what to fix — in a PDF you can send to a buyer, an adjuster, or yourself.',
@@ -191,9 +191,9 @@ export const services: Service[] = [
       },
       {
         question:
-          'When should I schedule a residential roof inspection in Houston or Fort Worth?',
+          'When should I schedule a residential roof inspection in Houston?',
         answer:
-          'Before you buy or sell, after a hail or wind event, or if the roof is approaching typical shingle age. Putting off a minor repair is how Texas weather turns it into a replacement. We inspect from the Katy and Arlington offices.',
+          'Before you buy or sell, after a hail or wind event, or if the roof is approaching typical shingle age. Putting off a minor repair is how Texas weather turns it into a replacement. We inspect from the Katy office.',
       },
       {
         question: 'What do I receive after the inspection?',
@@ -217,7 +217,7 @@ export const services: Service[] = [
     image: '/services/residential/asphalt-shingles.jpg',
     metaTitle: 'Asphalt Shingle Roofing | Installation & Repair',
     metaDescription:
-      'Asphalt shingle installation, repair, and replacement in Houston and Fort Worth. Premium and architectural shingles with manufacturer warranties from Reynolds Roofing TX.',
+      'Asphalt shingle installation, repair, and replacement in Houston. Premium and architectural shingles with manufacturer warranties from Reynolds Roofing TX.',
     heroTitle: 'Asphalt shingles that hold up to Texas weather.',
     heroDescription:
       'The most common sloped-roof material in Texas — done with the right weight, wind rating, and warranty, not the cheapest bundle on the truck.',
@@ -231,7 +231,7 @@ export const services: Service[] = [
     highlights: [
       {
         title: 'The Texas default — done right',
-        body: 'Most Houston and Fort Worth houses wear asphalt. That does not mean every shingle is equal. We spec weight and wind rating for Gulf humidity and DFW hail, not a generic inland climate.',
+        body: 'Most Houston houses wear asphalt. That does not mean every shingle is equal. We spec weight and wind rating for Gulf humidity and Houston hail, not a generic inland climate.',
       },
       {
         title: 'Repair or replace',
@@ -272,9 +272,9 @@ export const services: Service[] = [
     faqs: [
       {
         question:
-          'Are asphalt shingles a good choice for Houston and Fort Worth weather?',
+          'Are asphalt shingles a good choice for Houston weather?',
         answer:
-          'They are the most common sloped-roof material in Texas when the weight, wind rating, and warranty match the climate. We spec architectural and premium shingles for Gulf humidity and DFW hail — not a generic inland bundle — and install them to the manufacturer’s nailing and ventilation spec.',
+          'They are the most common sloped-roof material in Texas when the weight, wind rating, and warranty match the climate. We spec architectural and premium shingles for Gulf humidity and Houston hail — not a generic inland bundle — and install them to the manufacturer’s nailing and ventilation spec.',
       },
       {
         question: 'Should I repair damaged shingles or replace the whole roof?',
@@ -303,7 +303,7 @@ export const services: Service[] = [
     image: '/services/residential/tile-service.jpg',
     metaTitle: 'Tile & Slate Roofing | Installation and Repair',
     metaDescription:
-      'Clay, concrete tile, and slate roofing in Houston and Fort Worth. Wind-resistant installation, copper flashings, and low-maintenance systems from Reynolds Roofing TX.',
+      'Clay, concrete tile, and slate roofing in Houston. Wind-resistant installation, copper flashings, and low-maintenance systems from Reynolds Roofing TX.',
     heroTitle: 'Tile and slate that earn their keep in Texas.',
     heroDescription:
       'Curb appeal, insulation, and a long service life — if the underlayment, flashings, and fastening are done like a specialty roof, not a shingle job in disguise.',
@@ -389,7 +389,7 @@ export const services: Service[] = [
     image: '/services/residential/metal-roofing.jpg',
     metaTitle: 'Residential Metal Roofing | Standing Seam & Lock Seam',
     metaDescription:
-      'Standing seam and lock seam metal roofs for Houston and Fort Worth homes. Recyclable, long-lived systems that can often go over an existing roof. Reynolds Roofing TX.',
+      'Standing seam and lock seam metal roofs for Houston homes. Recyclable, long-lived systems that can often go over an existing roof. Reynolds Roofing TX.',
     heroTitle: 'A metal roof that works as hard as the Texas sun.',
     heroDescription:
       'Standing seam and lock seam systems — long service life, strong colors, and an environmental edge when the old roof can stay put.',
@@ -407,7 +407,7 @@ export const services: Service[] = [
       },
       {
         title: 'Standing seam and lock seam',
-        body: 'We install the profiles that belong on a house — clean lines, concealed or controlled fasteners, and coatings that hold color in Gulf and North Texas sun.',
+        body: 'We install the profiles that belong on a house — clean lines, concealed or controlled fasteners, and coatings that hold color in Gulf Coast sun.',
       },
       {
         title: 'End of life is not the dump',
@@ -453,7 +453,7 @@ export const services: Service[] = [
           'Standing seam and lock seam systems with Kynar-coated colors — the profiles that belong on a house, not a barn panel screwed to a residential deck.',
       },
       {
-        question: 'Is metal roofing a good fit for Houston heat and DFW hail?',
+        question: 'Is metal roofing a good fit for Houston heat and hail?',
         answer:
           'Metal is a long-lived, reflective option when it is detailed correctly. Energy, hail exposure, and HOA rules all factor in. We will say when metal is the right spend and when a premium shingle still makes more sense for the street.',
       },
@@ -474,7 +474,7 @@ export const services: Service[] = [
     image: '/services/residential/interior-repairs.jpg',
     metaTitle: 'Interior Repairs After Roof Leaks | Drywall, Paint & Restore',
     metaDescription:
-      'Interior repairs in Houston and Fort Worth — sheetrock, texture matching, painting, and restoration after roof leaks. Reynolds Roofing TX handles the roof and the rooms underneath.',
+      'Interior repairs in Houston — sheetrock, texture matching, painting, and restoration after roof leaks. Reynolds Roofing TX handles the roof and the rooms underneath.',
     heroTitle: 'The leak is fixed. Now fix the rooms.',
     heroDescription:
       'Sheetrock, texture, paint, and the restoration work a roof leak leaves behind — same company, one schedule.',
@@ -561,7 +561,7 @@ export const services: Service[] = [
     image: '/services/residential/exterior-repairs.jpg',
     metaTitle: 'Exterior Repairs | Siding, Gutters, Paint & Roof Work',
     metaDescription:
-      'Exterior home repairs in Houston and Fort Worth — siding, seamless gutters, fascia, paint, chimneys, and roof work from Reynolds Roofing TX.',
+      'Exterior home repairs in Houston — siding, seamless gutters, fascia, paint, chimneys, and roof work from Reynolds Roofing TX.',
     heroTitle: 'The whole envelope, not just the shingles.',
     heroDescription:
       'Siding, gutters, fascia, paint, and the roof that ties it together — one crew for the outside of the house.',
@@ -649,7 +649,7 @@ export const services: Service[] = [
     metaTitle:
       'Roof Maintenance Packages | Preventative Care & Critter Control',
     metaDescription:
-      'Preventative roof maintenance, deep cleaning, and critter control packages for Houston and Fort Worth homes. Keep the roof you have. Reynolds Roofing TX.',
+      'Preventative roof maintenance, deep cleaning, and critter control packages for Houston homes. Keep the roof you have. Reynolds Roofing TX.',
     heroTitle: 'Keep the roof you have working longer.',
     heroDescription:
       'Yearly inspections, preventative maintenance, and packages that catch small problems before they become a replacement.',
@@ -735,7 +735,7 @@ export const services: Service[] = [
     image: '/services/commercial/metal-roofing.jpg',
     metaTitle: 'Commercial Metal Roofing | Standing Seam & Industrial Panels',
     metaDescription:
-      'Commercial metal roof installation and repair in Houston and Fort Worth. Standing seam, lock seam, and industrial metal systems from Reynolds Roofing TX.',
+      'Commercial metal roof installation and repair in Houston. Standing seam, lock seam, and industrial metal systems from Reynolds Roofing TX.',
     heroTitle: 'Commercial metal that looks finished and lasts.',
     heroDescription:
       'Low-maintenance metal for sloping commercial structures — standing seam, lock seam, and industrial panels specced as a long-term investment.',
@@ -775,7 +775,7 @@ export const services: Service[] = [
       },
       {
         title: 'Spec the panel',
-        body: 'Profile, coating, and fastening are chosen for the building’s weather and look — Houston humidity or DFW hail.',
+        body: 'Profile, coating, and fastening are chosen for the building’s weather and look — Houston humidity and hail.',
       },
       {
         title: 'Install with the business running',
@@ -820,7 +820,7 @@ export const services: Service[] = [
     image: '/services/commercial/inspection-reports.jpg',
     metaTitle: 'Commercial Roof Inspections | PDF Reports & Maintenance Plans',
     metaDescription:
-      'Commercial roof inspections in Houston and Fort Worth with PDF photo reports, remaining-life estimates, and written repair proposals from Reynolds Roofing TX.',
+      'Commercial roof inspections in Houston with PDF photo reports, remaining-life estimates, and written repair proposals from Reynolds Roofing TX.',
     heroTitle: 'Know what the commercial roof is actually doing.',
     heroDescription:
       'Condition, remaining life, and a maintenance path — documented in PDF with photos your facilities team can act on.',
@@ -905,14 +905,14 @@ export const services: Service[] = [
     image: '/services/commercial/roof-repair.jpg',
     metaTitle: 'Commercial Roof Repair | Emergency Leaks & Replacements',
     metaDescription:
-      'Commercial roof repair in Houston and Fort Worth — emergency leaks, maintenance, full replacement, and insurance-claim help from Reynolds Roofing TX.',
+      'Commercial roof repair in Houston — emergency leaks, maintenance, full replacement, and insurance-claim help from Reynolds Roofing TX.',
     heroTitle: 'Commercial repairs that respect the business below.',
     heroDescription:
       'Emergency leaks, planned maintenance, and full replacements — with manufacturer relationships and insurance-claim help when the weather did the damage.',
     description:
       'Emergency leak service, maintenance, and full commercial replacements across TPO, metal, bitumen, and coatings.',
     intro: [
-      'Commercial roofs are unique and they fail in unique ways. We provide repair, maintenance, and replacement for the systems Houston and Fort Worth buildings actually wear — TPO, EPDM, modified bitumen, built-up, standing seam, tile, coatings, and foam.',
+      'Commercial roofs are unique and they fail in unique ways. We provide repair, maintenance, and replacement for the systems Houston buildings actually wear — TPO, EPDM, modified bitumen, built-up, standing seam, tile, coatings, and foam.',
       'Long-standing manufacturer and supplier relationships give us the flexibility to meet the building instead of forcing one product. When damage is beyond normal wear, our insurance-claims staff can help evaluate the property and walk you through the claims process, staying in contact through the project.',
       'Same-day emergency leak service is on the board when water is in the building. The rest of the work gets scheduled around your operation.',
     ],
@@ -961,14 +961,14 @@ export const services: Service[] = [
     ],
     faqs: [
       {
-        question: 'Do you offer emergency commercial roof repair in Houston and Fort Worth?',
+        question: 'Do you offer emergency commercial roof repair in Houston?',
         answer:
           'Yes. Same-day emergency leak service is on the board when water is in the building. Temporary measures stop the leak first; then we diagnose the system and price a lasting repair.',
       },
       {
         question: 'Which commercial roof systems can you repair?',
         answer:
-          'TPO, EPDM, modified bitumen, built-up, standing seam, tile, elastomeric coatings, and foam — the stack Houston and Fort Worth buildings actually wear. Manufacturer relationships let us meet the building instead of forcing one product.',
+          'TPO, EPDM, modified bitumen, built-up, standing seam, tile, elastomeric coatings, and foam — the stack Houston buildings actually wear. Manufacturer relationships let us meet the building instead of forcing one product.',
       },
       {
         question: 'Can you help with an insurance claim after storm damage?',
@@ -992,7 +992,7 @@ export const services: Service[] = [
     image: '/services/commercial/roof-leak-detection.jpg',
     metaTitle: 'Commercial Leak Detection | Same-Day Emergency Service',
     metaDescription:
-      'Same-day commercial leak detection and emergency roofing in Houston and Fort Worth. Photo reports, recommended repairs, and preventative maintenance. Reynolds Roofing TX.',
+      'Same-day commercial leak detection and emergency roofing in Houston. Photo reports, recommended repairs, and preventative maintenance. Reynolds Roofing TX.',
     heroTitle: 'Find the leak. Then stop it.',
     heroDescription:
       'Commercial leaks rarely start where the bucket sits. We trace them, document them, and repair the system — often the same day.',
@@ -1048,7 +1048,7 @@ export const services: Service[] = [
       {
         question: 'How quickly can you find and stop a commercial roof leak?',
         answer:
-          'We understand the urgency. Dedicated service crews handle emergency roofing, often the same day, instead of waiting on a residential calendar. Call Katy at 832-321-5088 or Arlington at 817-789-8458 when water is in the building.',
+          'We understand the urgency. Dedicated service crews handle emergency roofing, often the same day, instead of waiting on a residential calendar. Call 832-321-5088 when water is in the building.',
       },
       {
         question: 'Why is the leak not always where the bucket sits?',
@@ -1077,7 +1077,7 @@ export const services: Service[] = [
     image: '/services/commercial/modified-bitumen.jpg',
     metaTitle: 'Modified Bitumen Roofing | Multi-Ply Commercial Systems',
     metaDescription:
-      'Modified bitumen commercial roofing in Houston and Fort Worth — multi-ply membranes, insulation, flashings, and surfacing from Reynolds Roofing TX.',
+      'Modified bitumen commercial roofing in Houston — multi-ply membranes, insulation, flashings, and surfacing from Reynolds Roofing TX.',
     heroTitle: 'Multi-ply roofs for decks that need redundancy.',
     heroDescription:
       'Modified bitumen systems built in layers — insulation, plies, membrane, adhesive, and surfacing — so one puncture is not an open building.',
@@ -1162,7 +1162,7 @@ export const services: Service[] = [
     image: '/services/commercial/tile-service.jpg',
     metaTitle: 'Commercial Tile & Slate Roofing | Repair and Installation',
     metaDescription:
-      'Commercial tile and slate roof repair and installation in Houston and Fort Worth. Long-lived, low-maintenance systems from Reynolds Roofing TX.',
+      'Commercial tile and slate roof repair and installation in Houston. Long-lived, low-maintenance systems from Reynolds Roofing TX.',
     heroTitle: 'Tile and slate on buildings that need to look finished.',
     heroDescription:
       'Steep-slope commercial and institutional roofs — tile and slate that add value, insulation, and a real defense against Texas weather.',
@@ -1247,7 +1247,7 @@ export const services: Service[] = [
     image: '/services/commercial/waterproofing.jpg',
     metaTitle: 'Waterproofing & Roof Coatings | Restoration Without Tear-Off',
     metaDescription:
-      'Commercial waterproofing and reflective roof coatings in Houston and Fort Worth. Restore low-slope roofs, decks, and walls without a full tear-off. Reynolds Roofing TX.',
+      'Commercial waterproofing and reflective roof coatings in Houston. Restore low-slope roofs, decks, and walls without a full tear-off. Reynolds Roofing TX.',
     heroTitle: 'Waterproof and restore before you tear it off.',
     heroDescription:
       'Roof coatings, deck coatings, and wall systems that stop leaks, reflect heat, and postpone a replacement when the deck is still sound.',
@@ -1332,10 +1332,10 @@ export const services: Service[] = [
     image: '/services/commercial/TPO.jpg',
     metaTitle: 'TPO Roofing | Thermoplastic Single-Ply for Texas',
     metaDescription:
-      'TPO single-ply commercial roofing in Houston and Fort Worth. Reflective, energy-efficient membranes — fully adhered, mechanically attached, or ballasted. Reynolds Roofing TX.',
+      'TPO single-ply commercial roofing in Houston. Reflective, energy-efficient membranes — fully adhered, mechanically attached, or ballasted. Reynolds Roofing TX.',
     heroTitle: 'TPO — the single-ply Texas commercial roofs keep choosing.',
     heroDescription:
-      'Reflective thermoplastic membranes for southern climates: energy-efficient, weldable, and specced for Houston and Fort Worth commercial decks.',
+      'Reflective thermoplastic membranes for southern climates: energy-efficient, weldable, and specced for Houston commercial decks.',
     description:
       'Thermoplastic polyolefin single-ply — reflective cool-roof membranes for commercial and industrial buildings.',
     intro: [
@@ -1346,7 +1346,7 @@ export const services: Service[] = [
     highlights: [
       {
         title: 'Built for southern sun',
-        body: 'White TPO reflects heat. In Houston and Fort Worth that is not a green-building extra — it is how you keep a low-slope roof from cooking the top floor.',
+        body: 'White TPO reflects heat. In Houston that is not a green-building extra — it is how you keep a low-slope roof from cooking the top floor.',
       },
       {
         title: 'Heat-welded seams',
@@ -1386,7 +1386,7 @@ export const services: Service[] = [
     ],
     faqs: [
       {
-        question: 'Why is TPO so common on Houston and Fort Worth commercial roofs?',
+        question: 'Why is TPO so common on Houston commercial roofs?',
         answer:
           'TPO is a reflective, energy-efficient single-ply well suited to southern climates. White TPO reflects heat so a low-slope roof does not cook the top floor — that is not a green-building extra in Texas, it is how the membrane is supposed to work.',
       },

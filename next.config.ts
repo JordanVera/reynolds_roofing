@@ -152,17 +152,17 @@ const legacyHtmlRedirects: Array<{
   },
   {
     source: '/Fort-Worth-Roofing-Company.html',
-    destination: '/areas-served/fort-worth',
+    destination: '/areas-served',
     permanent,
   },
   {
     source: '/Arlington-Roofing-Company.html',
-    destination: '/areas-served/arlington',
+    destination: '/areas-served',
     permanent,
   },
   {
     source: '/Belbrook-Roofing-Company.html',
-    destination: '/areas-served/benbrook',
+    destination: '/areas-served',
     permanent,
   },
 ];
@@ -192,8 +192,23 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/areas-served/fort-worth',
+        destination: '/areas-served',
+        permanent,
+      },
+      {
+        source: '/areas-served/arlington',
+        destination: '/areas-served',
+        permanent,
+      },
+      {
+        source: '/areas-served/benbrook',
+        destination: '/areas-served',
+        permanent,
+      },
+      {
         source: '/areas-served/belbrook',
-        destination: '/areas-served/benbrook',
+        destination: '/areas-served',
         permanent,
       },
       {

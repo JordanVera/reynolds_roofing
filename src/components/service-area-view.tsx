@@ -112,7 +112,7 @@ export function ServiceAreaView({ area }: { area: ServiceArea }) {
             className="rounded-2xl border border-border bg-card p-6"
           >
             <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
-              {office.label} office
+              Katy office
             </Badge>
             <div className="flex items-start gap-3">
               <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -258,7 +258,7 @@ export function ServiceAreaView({ area }: { area: ServiceArea }) {
               {[
                 'Free walk-through and written estimate',
                 'No pressure — you decide the timeline',
-                `Served from the ${office.office.city} office`,
+                'Served from the Katy office',
               ].map((point) => (
                 <div
                   key={point}

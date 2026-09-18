@@ -18,7 +18,7 @@ import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
-  description: `This page isn't on the roof. Get back to ${site.shortName} — Houston and Fort Worth roofing, free inspections.`,
+  description: `This page isn't on the roof. Get back to ${site.shortName} — Houston roofing, free inspections.`,
   robots: { index: false, follow: true },
 };
 
@@ -32,7 +32,7 @@ const destinations = [
   {
     href: '/areas-served',
     label: 'Areas served',
-    description: 'Houston, Fort Worth, and in between.',
+    description: 'Houston and surrounding cities.',
     icon: MapPinIcon,
   },
   {
@@ -52,7 +52,7 @@ const destinations = [
 const trustItems = [
   { icon: ShieldCheckIcon, label: 'Licensed & Insured' },
   { icon: CheckCircleIcon, label: 'Free Inspections' },
-  { icon: MapPinIcon, label: 'Houston + Fort Worth' },
+  { icon: MapPinIcon, label: 'Greater Houston' },
 ] as const;
 
 function MissingShingleMark() {

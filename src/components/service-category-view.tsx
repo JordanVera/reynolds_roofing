@@ -27,7 +27,7 @@ export function ServiceCategoryView({
   return (
     <>
       <PageHero
-        eyebrow={`${meta.label} · Houston & Fort Worth`}
+        eyebrow={`${meta.label} · Houston`}
         title={meta.heroTitle}
         description={meta.heroDescription}
         compact

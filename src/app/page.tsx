@@ -26,17 +26,17 @@ import { areaPath, areas } from '@/lib/areas';
 import { featuredGalleryItems } from '@/lib/gallery';
 import { homeFaqs } from '@/lib/faqs';
 import { pageMetadata } from '@/lib/seo';
-import { site, telHref } from '@/lib/site';
+import { office, site } from '@/lib/site';
 import { featuredTestimonials } from '@/lib/testimonials';
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Houston & Fort Worth Roofing | Free Inspections',
+    title: 'Houston Roofing | Free Inspections',
     description: site.description,
     path: '/',
   }),
   title: {
-    absolute: `Houston & Fort Worth Roofing | Free Inspections | ${site.name}`,
+    absolute: `Houston Roofing | Free Inspections | ${site.name}`,
   },
 };
 
@@ -54,16 +54,16 @@ const heroOutlineStyle = {
 const heroProof = [
   { icon: CalendarIcon, label: `Since ${site.founded}` },
   { icon: HardHatIcon, label: '50+ years combined' },
-  { icon: Building2Icon, label: 'Katy + Arlington offices' },
+  { icon: Building2Icon, label: 'Katy office' },
 ] as const;
 
 export default function HomePage() {
   return (
     <>
       <PageHero
-        eyebrow="Katy, TX · Houston · Fort Worth"
-        title="Same-week roof inspections for Houston and Fort Worth."
-        description="Free walk-through and a written estimate from the Katy and Arlington offices. You decide whether to repair or replace — no pressure on the roof."
+        eyebrow="Katy, TX · Greater Houston"
+        title="Same-week roof inspections for Houston."
+        description="Free walk-through and a written estimate from the Katy office. You decide whether to repair or replace — no pressure on the roof."
         size="lg"
         trustRow={
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/15 pt-8">
@@ -92,20 +92,17 @@ export default function HomePage() {
         <Button asChild className="h-12 px-6 text-base font-semibold">
           <Link href="/contact">Get a free estimate</Link>
         </Button>
-        {site.locations.map((location) => (
-          <Button
-            key={location.id}
-            asChild
-            variant="outline"
-            className={heroOutlineClass}
-            style={heroOutlineStyle}
-          >
-            <a href={telHref(location.phone)}>
-              <PhoneIcon className="size-4" />
-              {location.city} · {location.phone}
-            </a>
-          </Button>
-        ))}
+        <Button
+          asChild
+          variant="outline"
+          className={heroOutlineClass}
+          style={heroOutlineStyle}
+        >
+          <a href={site.phoneHref}>
+            <PhoneIcon className="size-4" />
+            {site.phone}
+          </a>
+        </Button>
       </PageHero>
 
       <HomeIntentTiles />
@@ -119,7 +116,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Who we are"
               title="A roofing company with roots in Texas since 2006"
-              description="Founded in Katy as a full-service roofing company, Reynolds Roofing TX now runs two offices — Katy for Houston and Arlington for Fort Worth — with licensed crews and long manufacturer relationships."
+              description="Founded in Katy as a full-service roofing company, Reynolds Roofing TX serves Greater Houston with licensed crews and long manufacturer relationships."
             />
             <div className="mt-8">
               <Button asChild>
@@ -134,28 +131,24 @@ export default function HomePage() {
           >
             <div className="mb-6">
               <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
-                Two Locations
+                Katy office
               </Badge>
-              <div className="space-y-4">
-                {site.locations.map((loc) => (
-                  <div key={loc.city} className="flex items-start gap-3">
-                    <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
-                    <div>
-                      <p className="text-sm font-bold">
-                        {loc.city}, {loc.state}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {loc.address}, {loc.zip}
-                      </p>
-                      <a
-                        href={`tel:+1${loc.phone.replace(/\D/g, '')}`}
-                        className="text-sm font-medium text-foreground transition-colors hover:text-primary"
-                      >
-                        {loc.phone}
-                      </a>
-                    </div>
-                  </div>
-                ))}
+              <div className="flex items-start gap-3">
+                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+                <div>
+                  <p className="text-sm font-bold">
+                    {office.city}, {office.state}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {office.address}, {office.zip}
+                  </p>
+                  <a
+                    href={site.phoneHref}
+                    className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+                  >
+                    {office.phone}
+                  </a>
+                </div>
               </div>
             </div>
             <div className="border-t border-border pt-5">
@@ -183,8 +176,8 @@ export default function HomePage() {
       <Section className="bg-card/20 texas-grid">
         <SectionHeading
           eyebrow="Where we work"
-          title="Ten cities. Two offices. One standard."
-          description="Licensed crews from Katy and Arlington cover Houston, Fort Worth, and the communities in between."
+          title="Seven cities. One office. One standard."
+          description="Licensed crews from Katy cover Houston and the surrounding communities."
         />
         <Stagger className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {areas.map((area) => (
@@ -197,7 +190,7 @@ export default function HomePage() {
                 <div>
                   <p className="text-sm font-semibold">{area.name}</p>
                   <p className="mt-0.5 text-xs text-muted-foreground">
-                    {area.region === 'houston' ? 'Houston metro' : 'DFW metro'}
+                    Houston metro
                   </p>
                 </div>
               </Link>
@@ -215,7 +208,7 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="Project gallery"
           title="Roofs we have already finished"
-          description="Replacements, repairs, leak work, and restoration from jobs across Houston and Fort Worth. Open the full gallery for every photo."
+          description="Replacements, repairs, leak work, and restoration from jobs across Houston. Open the full gallery for every photo."
         />
         <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           {featuredGalleryItems.map((item) => (

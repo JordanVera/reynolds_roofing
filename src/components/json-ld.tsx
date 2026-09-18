@@ -4,7 +4,7 @@ import {
   aggregateRatingFromTestimonials,
   schemaIds,
 } from '@/lib/seo';
-import { site, type SiteLocation } from '@/lib/site';
+import { office, site, type SiteLocation } from '@/lib/site';
 
 export function JsonLd({ data }: { data: object }) {
   return (
@@ -35,13 +35,8 @@ function openingHours() {
   }));
 }
 
-function officeRegion(location: SiteLocation) {
-  switch (location.id) {
-    case 'houston':
-      return 'houston' as const;
-    case 'Fort Worth':
-      return 'dfw' as const;
-  }
+function officeRegion(_location: SiteLocation) {
+  return 'houston' as const;
 }
 
 function officeNode(location: SiteLocation) {
@@ -98,9 +93,6 @@ export function LocalBusinessJsonLd() {
         image: absoluteUrl(site.ogImage),
         ...(site.sameAs.length > 0 ? { sameAs: [...site.sameAs] } : {}),
         aggregateRating,
-        subOrganization: site.locations.map((location) => ({
-          '@id': schemaIds.office(location.id),
-        })),
       },
       {
         '@type': 'WebSite',
@@ -111,7 +103,7 @@ export function LocalBusinessJsonLd() {
         publisher: { '@id': schemaIds.organization },
         inLanguage: 'en-US',
       },
-      ...site.locations.map(officeNode),
+      officeNode(office),
     ],
   };
 

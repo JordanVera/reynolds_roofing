@@ -32,7 +32,7 @@ const mobileServiceLinks = [
 
 const mobileAreaLinks = [
   { href: '/areas-served/houston', label: 'Houston' },
-  { href: '/areas-served/fort-worth', label: 'Fort Worth' },
+  { href: '/areas-served/katy', label: 'Katy' },
 ] as const;
 
 function isNavActive(pathname: string, href: string) {
@@ -80,8 +80,7 @@ export function SiteHeader() {
       {/* <div className="border-b border-primary/20 bg-primary/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 text-sm md:px-6">
           <p className="font-medium text-foreground/90">
-            Storm damage? We inspect, document, and repair roofs across Houston
-            and Fort Worth.
+            Storm damage? We inspect, document, and repair roofs across Houston.
           </p>
           <a
             href={site.phoneHref}
@@ -113,7 +112,9 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
                 <div className="invisible absolute top-full left-0 z-50 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="grid w-[30rem] grid-cols-2 gap-6 rounded-xl border border-border bg-popover p-4 shadow-lg">
+                  <div className={`grid gap-6 rounded-xl border border-border bg-popover p-4 shadow-lg ${
+                    item.href === '/services' ? 'w-[30rem] grid-cols-2' : 'w-56 grid-cols-1'
+                  }`}>
                     {item.href === '/services'
                       ? (
                           [
@@ -151,7 +152,6 @@ export function SiteHeader() {
                       : (
                           [
                             ['houston', 'Greater Houston'],
-                            ['dfw', 'Dallas–Fort Worth'],
                           ] as const
                         ).map(([region, label]) => (
                           <div key={region}>

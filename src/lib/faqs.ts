@@ -1,15 +1,15 @@
 import type { FaqItem } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { office } from '@/lib/site';
 
 export const homeFaqs: FaqItem[] = [
   {
-    question: 'Do you offer free roof inspections in Houston and Fort Worth?',
+    question: 'Do you offer free roof inspections in Houston?',
     answer:
-      'Yes. Reynolds Roofing TX provides a free walk-through and a written estimate from the Katy and Arlington offices. You decide whether to repair, maintain, or replace — there is no pressure to sign on the roof.',
+      'Yes. Reynolds Roofing TX provides a free walk-through and a written estimate from the Katy office. You decide whether to repair, maintain, or replace — there is no pressure to sign on the roof.',
   },
   {
-    question: 'Where are your offices?',
-    answer: `Our Houston-area office is at ${site.locations[0].address}, ${site.locations[0].city}, TX ${site.locations[0].zip} (${site.locations[0].phone}). The DFW office is at ${site.locations[1].address}, ${site.locations[1].city}, TX ${site.locations[1].zip} (${site.locations[1].phone}). Fort Worth, Arlington, and Benbrook work runs from Arlington.`,
+    question: 'Where is your office?',
+    answer: `Our office is at ${office.address}, ${office.city}, TX ${office.zip}. Call ${office.phone}.`,
   },
   {
     question: 'Do you handle both residential and commercial roofing?',
@@ -24,7 +24,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Are you licensed and insured?',
     answer:
-      'Yes. Reynolds Roofing TX is licensed and insured, founded in Spring 2006 in Katy, with more than 50 years of combined roofing and construction experience across the two offices.',
+      'Yes. Reynolds Roofing TX is licensed and insured, founded in Spring 2006 in Katy, with more than 50 years of combined roofing and construction experience.',
   },
 ];
 
@@ -32,7 +32,7 @@ export const contactFaqs: FaqItem[] = [
   {
     question: 'How do I request a free roof inspection?',
     answer:
-      'Call the Katy office at 832-321-5088, the Arlington office at 817-789-8458, or send the form on this page. We will follow up during business hours to schedule a free, no-obligation inspection and written estimate.',
+      'Call the Katy office at 832-321-5088 or send the form on this page. We will follow up during business hours to schedule a free, no-obligation inspection and written estimate.',
   },
   {
     question: 'How fast do you respond to estimate requests?',
@@ -40,9 +40,9 @@ export const contactFaqs: FaqItem[] = [
       'Most calls are answered the same day. Form submissions receive a response by the next business morning. Emergency commercial leaks are treated as urgent — do not wait on the form if water is in the building.',
   },
   {
-    question: 'Which office should I call?',
+    question: 'Which number should I call?',
     answer:
-      'Houston, Katy, Sugar Land, Stafford, Cypress, Jersey Village, and Greater Houston: 832-321-5088 (Katy). Fort Worth, Arlington, and Benbrook: 817-789-8458 (Arlington). Either number will get you on the calendar.',
+      'Call the Katy office at 832-321-5088 for Houston, Katy, Sugar Land, Stafford, Cypress, Jersey Village, and the Greater Houston area. That number will get you on the calendar.',
   },
   {
     question: 'What happens after I submit the form?',
@@ -55,12 +55,12 @@ export const aboutFaqs: FaqItem[] = [
   {
     question: 'When was Reynolds Roofing TX founded?',
     answer:
-      'Spring 2006 in Katy. The company started as a full-service roofing outfit with a simple brief: the highest customer service and craftsmanship we could deliver. We still run that way from the Katy office and the Arlington shop.',
+      'Spring 2006 in Katy. The company started as a full-service roofing outfit with a simple brief: the highest customer service and craftsmanship we could deliver. We still run that way from the Katy office.',
   },
   {
-    question: 'Do you have an office in Fort Worth?',
+    question: 'Where do you work besides Katy?',
     answer:
-      'The DFW shop is in Arlington at 4840 Matlock Rd., Ste. D110 — not a PO box. Fort Worth, Arlington, and Benbrook work runs from that office on 817-789-8458. Houston-area work runs from Katy.',
+      'From the Katy office we serve Houston, Sugar Land, Stafford, Cypress, Jersey Village, and the surrounding Greater Houston communities.',
   },
   {
     question: 'What kind of work do you take on besides roofing?',
@@ -82,7 +82,7 @@ export const testimonialFaqs: FaqItem[] = [
   },
   {
     question: 'Where can I read every Google review?',
-    answer: `Use the “View all Google reviews” button on this page, or search Reynolds Roofing TX in Google Maps at ${site.locations[0].address}, ${site.locations[0].city}, TX. That listing is the source for the quotes here.`,
+    answer: `Use the “View all Google reviews” button on this page, or search Reynolds Roofing TX in Google Maps at ${office.address}, ${office.city}, TX. That listing is the source for the quotes here.`,
   },
   {
     question: 'Can I leave a review after a job?',

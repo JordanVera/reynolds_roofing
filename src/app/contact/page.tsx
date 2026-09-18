@@ -19,11 +19,11 @@ import { LeadForm } from '@/components/lead-form';
 import { contactFaqs } from '@/lib/faqs';
 import { resolveFormService } from '@/lib/services';
 import { breadcrumbJsonLd, pageMetadata, schemaIds } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { office, site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Free Estimate & Roof Inspection',
-  description: `Request a free roof inspection and estimate with ${site.name}. Call ${site.phone} or ${site.locations[1].phone}.`,
+  description: `Request a free roof inspection and estimate with ${site.name}. Call ${site.phone}.`,
   path: '/contact',
 });
 
@@ -75,7 +75,7 @@ export default async function ContactPage({
           <FadeIn className="space-y-6">
             <div>
               <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15">
-                Houston &amp; Fort Worth
+                Greater Houston
               </Badge>
               <h2 className="font-heading text-2xl font-bold tracking-tight">
                 Get in touch
@@ -87,39 +87,35 @@ export default async function ContactPage({
             </div>
 
             <div className="space-y-3">
-              {site.locations.map((location) => (
-                <div key={location.id} className="space-y-3">
-                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
-                    <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                      <PhoneIcon className="size-4 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        {`${location.city}, ${location.state}`}
-                      </p>
-                      <a
-                        href={`tel:+1${location.phone.replace(/\D/g, '')}`}
-                        className="mt-0.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
-                      >
-                        {location.phone}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
-                    <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                      <MapPinIcon className="size-4 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        {`${location.city} office`}
-                      </p>
-                      <p className="mt-0.5 text-sm font-semibold">
-                        {`${location.address}, ${location.city} ${location.state} ${location.zip}`}
-                      </p>
-                    </div>
-                  </div>
+              <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <PhoneIcon className="size-4 text-primary" />
                 </div>
-              ))}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Phone
+                  </p>
+                  <a
+                    href={site.phoneHref}
+                    className="mt-0.5 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    {site.phone}
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
+                <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <MapPinIcon className="size-4 text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Katy office
+                  </p>
+                  <p className="mt-0.5 text-sm font-semibold">
+                    {`${office.address}, ${office.city} ${office.state} ${office.zip}`}
+                  </p>
+                </div>
+              </div>
               <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-4">
                 <div className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10">
                   <MailIcon className="size-4 text-primary" />
@@ -198,7 +194,7 @@ export default async function ContactPage({
       <FaqList
         faqs={contactFaqs}
         title="Before you call"
-        description="How inspections are scheduled and which office to use."
+        description="How inspections are scheduled and how to reach the Katy office."
       />
     </>
   );

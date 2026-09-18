@@ -21,7 +21,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = pageMetadata({
   title: 'Project Gallery',
   description:
-    'Browse Reynolds Roofing TX project photos — roof replacements, leak repairs, storm damage, patio covers, and restoration work across Houston and Fort Worth.',
+    'Browse Reynolds Roofing TX project photos — roof replacements, leak repairs, storm damage, patio covers, and restoration work across Houston.',
   path: '/gallery',
   image: galleryItems[2]?.src,
 });
@@ -39,7 +39,7 @@ export default function GalleryPage() {
         data={imageGalleryJsonLd({
           name: `Project Gallery | ${site.name}`,
           description:
-            'Roof replacements, leak repairs, storm damage, patio covers, and restoration work across Houston and Fort Worth.',
+            'Roof replacements, leak repairs, storm damage, patio covers, and restoration work across Houston.',
           path: '/gallery',
           images: galleryItems.map((item) => ({
             name: item.title,
@@ -52,7 +52,7 @@ export default function GalleryPage() {
 
       <PageHero
         eyebrow="Our work"
-        title="Project gallery from Houston and Fort Worth roofs."
+        title="Project gallery from Houston roofs."
         description="Real jobs from the Reynolds Roofing TX crew — replacements, repairs, leak work, and restoration. Filter by type or open any photo for a closer look."
         compact
       >

@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Houston & Fort Worth Roofing | ${site.name}`,
+    default: `Houston Roofing | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       }
     : {}),
   openGraph: {
-    title: `Houston & Fort Worth Roofing | ${site.name}`,
+    title: `Houston Roofing | ${site.name}`,
     description: site.description,
     locale: 'en_US',
     type: 'website',
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
         url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: `${site.name} roofing in Houston and Fort Worth`,
+        alt: `${site.name} roofing in Houston`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Houston & Fort Worth Roofing | ${site.name}`,
+    title: `Houston Roofing | ${site.name}`,
     description: site.description,
     images: [site.ogImage],
   },

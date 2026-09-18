@@ -28,7 +28,7 @@ export function ServiceView({ service }: { service: Service }) {
   return (
     <>
       <PageHero
-        eyebrow={`${category.label} · Houston & Fort Worth`}
+        eyebrow={`${category.label} · Houston`}
         title={service.heroTitle}
         description={service.heroDescription}
         compact
@@ -101,7 +101,7 @@ export function ServiceView({ service }: { service: Service }) {
               <div className="relative mt-8 aspect-4/3 max-w-2xl overflow-hidden rounded-2xl border border-border">
                 <Image
                   src={service.image}
-                  alt={`${service.name} in Houston and Fort Worth`}
+                  alt={`${service.name} in Houston`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"
@@ -241,8 +241,8 @@ export function ServiceView({ service }: { service: Service }) {
       <Section>
         <SectionHeading
           eyebrow="Areas served"
-          title={`${service.shortName} across Houston and Fort Worth`}
-          description="Licensed crews from the Katy and Arlington offices. Open a city page for local weather, neighborhoods, and the phone that will take the call."
+          title={`${service.shortName} across Houston`}
+          description="Licensed crews from the Katy office. Open a city page for local weather, neighborhoods, and the phone that will take the call."
         />
         <div className="flex flex-wrap gap-3">
           {areas.map((area) => (

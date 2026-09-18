@@ -42,7 +42,7 @@ export default async function ServicePage({ params }: PageProps) {
     name: service.name,
     description: service.metaDescription,
     provider: { '@id': schemaIds.organization },
-    areaServed: ['Houston, TX', 'Fort Worth, TX', 'Katy, TX', 'Arlington, TX'],
+    areaServed: ['Houston, TX', 'Katy, TX'],
     url: `${site.url}/services/${service.slug}`,
     ...(service.image ? { image: `${site.url}${service.image}` } : {}),
   };

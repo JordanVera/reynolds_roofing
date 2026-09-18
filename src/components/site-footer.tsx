@@ -5,7 +5,7 @@ import { SiteLogo } from '@/components/site-logo';
 import { Separator } from '@/components/ui/separator';
 import { areaPath, areas } from '@/lib/areas';
 import { servicePath, services } from '@/lib/services';
-import { site } from '@/lib/site';
+import { office, site } from '@/lib/site';
 
 export function SiteFooter() {
   return (
@@ -22,7 +22,7 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <MapPinIcon className="size-4 shrink-0 text-primary" />
-            <span className="font-medium">Houston & Fort Worth, TX</span>
+            <span className="font-medium">Houston, TX</span>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@ export function SiteFooter() {
             <SiteLogo className="h-12 w-auto" />
           </Link>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Full-service residential and commercial roofing in Houston and Fort Worth, TX.
+            Full-service residential and commercial roofing in Houston, TX.
             Licensed and insured. Free inspections available.
           </p>
           <div className="mt-5 space-y-3 text-sm">
@@ -51,16 +51,17 @@ export function SiteFooter() {
               <MailIcon className="size-4 shrink-0 text-primary" />
               {site.email}
             </a>
-            {site.locations.map((loc) => (
-              <div key={loc.city} className="flex items-start gap-2 text-muted-foreground">
-                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
-                <div>
-                  <p className="text-xs font-semibold text-foreground/80">{loc.city}, {loc.state}</p>
-                  <p className="text-xs">{loc.address}, {loc.zip}</p>
-                  <p className="text-xs">{loc.phone}</p>
-                </div>
+            <div className="flex items-start gap-2 text-muted-foreground">
+              <MapPinIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+              <div>
+                <p className="text-xs font-semibold text-foreground/80">
+                  {office.city}, {office.state}
+                </p>
+                <p className="text-xs">
+                  {office.address}, {office.zip}
+                </p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
@@ -130,7 +131,7 @@ export function SiteFooter() {
       <Separator />
       <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-muted-foreground md:flex-row md:justify-between md:px-6">
         <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-        <p>Licensed & Insured · Houston & Fort Worth, TX</p>
+        <p>Licensed & Insured · Houston, TX</p>
       </div>
     </footer>
   );
