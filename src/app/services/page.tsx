@@ -23,7 +23,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = pageMetadata({
   title: 'Roofing Services | Residential & Commercial',
   description:
-    'Reynolds Roofing TX offers a full line of residential and commercial roofing — inspections, shingles, metal, tile, TPO, leak repair, waterproofing, and restoration in Houston and Fort Worth.',
+    'Reynolds Roofing TX offers a full line of residential and commercial roofing — inspections, shingles, metal, tile, TPO, leak repair, waterproofing, and restoration in Houston.',
   path: '/services',
 });
 
@@ -42,7 +42,7 @@ export default function ServicesHubPage() {
         data={collectionPageJsonLd({
           name: `Roofing Services | ${site.name}`,
           description:
-            'Residential and commercial roofing services in Houston and Fort Worth.',
+            'Residential and commercial roofing services in Houston.',
           path: '/services',
           items: categories.flatMap((key) => {
             const category = categoryMeta[key];
@@ -62,7 +62,7 @@ export default function ServicesHubPage() {
       />
       <PageHero
         eyebrow="Residential · Commercial · Restoration"
-        title="Roofing services for Houston and Fort Worth"
+        title="Roofing services for Houston"
         description="A full line of residential and commercial roofing products, plus the restoration work that follows a leak. Big job or small — we take the time to finish on schedule and on budget."
         compact
       >

@@ -15,7 +15,8 @@ import { getService } from '@/lib/services';
 const intents = [
   {
     title: 'Leaking now',
-    description: 'Water in the house or on the ceiling. Same-week inspection.',
+    description:
+      'Water in the house or on the ceiling. Same-day inspections available.',
     icon: DropletsIcon,
     slug: 'residential-roof-inspections',
   },
@@ -28,7 +29,7 @@ const intents = [
   {
     title: 'Replace the roof',
     description:
-      'Shingles, tile, or metal — written estimate before anyone starts.',
+      'Shingles, tile, or metal — written estimates before work starts.',
     icon: HouseIcon,
     slug: 'residential-asphalt-shingles',
   },

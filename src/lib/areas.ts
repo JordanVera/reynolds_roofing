@@ -1,7 +1,7 @@
 import type { FaqItem } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { office } from '@/lib/site';
 
-export type ServiceRegion = 'houston' | 'dfw';
+export type ServiceRegion = 'houston';
 
 export type ServiceArea = {
   slug: string;
@@ -23,15 +23,9 @@ export type ServiceArea = {
 export const regionMeta = {
   houston: {
     label: 'Greater Houston',
-    office: site.locations[0],
-    phone: site.locations[0].phone,
-    phoneHref: `tel:+1${site.locations[0].phone.replace(/\D/g, '')}`,
-  },
-  dfw: {
-    label: 'Dallas–Fort Worth',
-    office: site.locations[1],
-    phone: site.locations[1].phone,
-    phoneHref: `tel:+1${site.locations[1].phone.replace(/\D/g, '')}`,
+    office,
+    phone: office.phone,
+    phoneHref: `tel:+1${office.phone.replace(/\D/g, '')}`,
   },
 } as const;
 
@@ -491,193 +485,6 @@ export const areas: ServiceArea[] = [
         question: 'Are newer suburban roofs still worth inspecting?',
         answer:
           'Yes. New construction still needs correct ventilation and flashing, and older rings of houses in Spring, Tomball, Richmond, Rosenberg, Pearland, and Humble are hitting replacement age together.',
-      },
-    ],
-  },
-  {
-    slug: 'fort-worth',
-    name: 'Fort Worth',
-    region: 'dfw',
-    metaTitle: 'Fort Worth Roofing Company | Hail & Storm Repairs',
-    metaDescription:
-      'Fort Worth roofing from Reynolds Roofing TX — replacements, hail repairs, metal and tile roofs, siding, and gutters. Call 817-789-8458.',
-    heroTitle: 'Fort Worth roofing built for North Texas weather.',
-    heroDescription:
-      'Hail, wind, and heat are the job in Fort Worth. Our Arlington office puts a licensed crew on Cowtown roofs without the out-of-town runaround.',
-    blurb:
-      'North Texas storm country. Hail repairs, replacements, and full-service roofing from our Arlington office.',
-    intro: [
-      'Hiring a contractor should not be a hassle. In Fort Worth we work the same way we do in Houston: long relationships, workmanship we would put on our own homes, and a job finished so you can get back to yours.',
-      'From the Arlington office we handle residential and commercial roofing in Fort Worth — replacements, metal, shingles, tile, leak repair, siding, and gutters. Call 817-789-8458 and we will get on the calendar.',
-    ],
-    localConditions: [
-      {
-        title: 'DFW hail alley',
-        body: 'Fort Worth sits in one of the most active hail corridors in the country. Bruised shingles can look fine from the yard and still fail in two summers. We get on the roof and document what the storm actually did.',
-      },
-      {
-        title: 'Heat and UV',
-        body: 'North Texas summers cook underlayment and dry out pipe boots. A Fort Worth roof that skips ventilation or cheap flashing shows it by year five. We spec for the heat, not just the hail.',
-      },
-      {
-        title: 'Historic and new stock',
-        body: 'Ridglea bungalows, west-side ranch homes, and new construction all need different systems. We match the roof to the house instead of forcing one product across town.',
-      },
-    ],
-    communities: [
-      'Ridglea',
-      'Arlington Heights',
-      'Tanglewood',
-      'Near Sundance Square',
-      'Southwest Fort Worth',
-    ],
-    zips: ['76107', '76109', '76116', '76132', '76133'],
-    nearby: ['arlington', 'benbrook'],
-    faqs: [
-      {
-        question:
-          'Do you have a Fort Worth roofing crew, or do you drive in from Houston?',
-        answer:
-          'We keep an Arlington office at 4840 Matlock Rd., Ste. D110 so Fort Worth work does not wait on a Houston calendar. Call 817-789-8458. Licensed crews handle replacements, hail repairs, metal, tile, siding, and gutters.',
-      },
-      {
-        question: 'Should I get my Fort Worth roof inspected after hail?',
-        answer:
-          'Yes. Fort Worth sits in one of the most active hail corridors in the country. Bruised shingles can look fine from the yard and still fail in two summers. We get on the roof and document what the storm actually did.',
-      },
-      {
-        question: 'How does North Texas heat affect a Fort Worth roof?',
-        answer:
-          'Summers cook underlayment and dry out pipe boots. A roof that skips ventilation or cheap flashing shows it by year five. We spec for the heat, not just the hail.',
-      },
-      {
-        question: 'Which Fort Worth neighborhoods do you serve?',
-        answer:
-          'Ridglea, Arlington Heights, Tanglewood, near Sundance Square, and southwest Fort Worth, including zips 76107, 76109, 76116, 76132, and 76133. Historic bungalows and new construction get different systems — not one product across town.',
-      },
-    ],
-  },
-  {
-    slug: 'arlington',
-    name: 'Arlington',
-    region: 'dfw',
-    metaTitle: 'Arlington Roofing Company | Local Office on Matlock',
-    metaDescription:
-      'Arlington, TX roofing from our office at 4840 Matlock Rd. Replacements, hail repairs, metal, tile, siding, and gutters. Call 817-789-8458.',
-    heroTitle: 'Arlington roofing from a crew down the road.',
-    heroDescription:
-      'Our DFW office is at 4840 Matlock Rd. in Arlington — not a distant dispatch. Hail, wind, and everyday leaks get a local response.',
-    blurb:
-      'Home of our DFW office on Matlock Road. Local Arlington roofing for hail, replacement, and repairs.',
-    intro: [
-      'Reynolds Roofing TX keeps a full-service team in Arlington so Mid-Cities work does not wait on a Houston calendar. We take pride in relationships and in workmanship we would put on our own homes — then we get the job done so you can get back to yours.',
-      'Residential and commercial roofing, replacements, metal, shingles, tile, leak repair, siding, and gutters are all on the board. Call 817-789-8458 or send the estimate form and the Arlington office will follow up.',
-    ],
-    localConditions: [
-      {
-        title: 'Mid-Cities hail',
-        body: 'Arlington catches the same severe-storm track as Fort Worth and Dallas. After a cell, we inspect for hail bruises, wind-lifted tabs, and damaged ventilation — and we can help document it for insurance when that is the path.',
-      },
-      {
-        title: 'Heat islands and attics',
-        body: 'Between the stadiums, highways, and housing, Arlington attics run hot. Ventilation and the right shingle rating are not extras here. They are how a ten-year roof does not become a six-year roof.',
-      },
-      {
-        title: 'Local office, local schedule',
-        body: 'Matlock Road is not a PO box. Estimates, material staging, and crew dispatch for Arlington happen from the same shop that answers 817-789-8458.',
-      },
-    ],
-    communities: [
-      'South Arlington',
-      'Matlock corridor',
-      'Pantego',
-      'Near AT&T Stadium',
-      'East Arlington',
-    ],
-    zips: ['76010', '76012', '76013', '76015', '76016', '76018'],
-    nearby: ['fort-worth', 'benbrook'],
-    faqs: [
-      {
-        question: 'Where is your Arlington roofing office?',
-        answer:
-          '4840 Matlock Rd., Ste. D110, Arlington, TX 76018. It is not a PO box. Estimates, material staging, and crew dispatch for Arlington happen from that shop. Call 817-789-8458.',
-      },
-      {
-        question: 'Do you help with hail insurance claims in Arlington?',
-        answer:
-          'After a Mid-Cities storm cell we inspect for hail bruises, wind-lifted tabs, and damaged ventilation — and we can help document it for insurance when that is the path.',
-      },
-      {
-        question: 'Why do Arlington attics run so hot?',
-        answer:
-          'Between the stadiums, highways, and housing, Arlington is a heat island. Ventilation and the right shingle rating are not extras here. They are how a ten-year roof does not become a six-year roof.',
-      },
-      {
-        question: 'Which parts of Arlington do you cover?',
-        answer:
-          'South Arlington, the Matlock corridor, Pantego, near AT&T Stadium, and east Arlington, including zips 76010, 76012, 76013, 76015, 76016, and 76018.',
-      },
-    ],
-  },
-  {
-    slug: 'benbrook',
-    name: 'Benbrook',
-    region: 'dfw',
-    metaTitle: 'Benbrook Roofing Company | Fort Worth Suburb Crews',
-    metaDescription:
-      'Benbrook, TX roofing from Reynolds Roofing TX — replacements, hail repairs, metal, tile, siding, and gutters. Call 817-789-8458.',
-    heroTitle: 'Benbrook roofing on the southwest edge of Fort Worth.',
-    heroDescription:
-      'Lake Benbrook, established streets, and DFW storm weather. We cover this Fort Worth suburb from the Arlington office.',
-    blurb:
-      'Southwest Fort Worth suburb by Lake Benbrook — hail-ready roofing from the Arlington crew.',
-    intro: [
-      'Benbrook is the Fort Worth-area community our DFW team serves on the southwest side of town (listed as Belbrook on the older site). Same licensed crews, same standard: workmanship we would put on our own homes, and a finished job so you can get back to yours.',
-      'From the Arlington office we handle replacements, metal, shingles, tile, leak repair, siding, and gutters in Benbrook. Call 817-789-8458 and we will schedule the inspection.',
-    ],
-    localConditions: [
-      {
-        title: 'Lake and prairie exposure',
-        body: 'Near Lake Benbrook, roofs see more wind and driving rain than a sheltered in-town lot. Ridge caps, drip edge, and valley metal have to be detailed — not tacked on.',
-      },
-      {
-        title: 'North Texas hail',
-        body: 'Benbrook is still in DFW hail country. We inspect for bruises you cannot see from the driveway and help you decide repair versus replace before the next season.',
-      },
-      {
-        title: 'Residential character',
-        body: 'This is a hometown suburb, not a commercial strip. We roof Benbrook houses to look right on the street and hold up in the heat — no storm-chaser shortcuts.',
-      },
-    ],
-    communities: [
-      'Lake Benbrook',
-      'Dutch Branch',
-      'Winscott',
-      'Southwest Fort Worth',
-    ],
-    zips: ['76126'],
-    nearby: ['fort-worth', 'arlington'],
-    faqs: [
-      {
-        question: 'Do you roof homes in Benbrook, TX?',
-        answer:
-          'Yes. Benbrook is the Fort Worth-area community our DFW team serves on the southwest side of town. From the Arlington office we handle replacements, metal, shingles, tile, leak repair, siding, and gutters. Call 817-789-8458.',
-      },
-      {
-        question:
-          'Does Lake Benbrook weather change how a roof should be built?',
-        answer:
-          'Near the lake, roofs see more wind and driving rain than a sheltered in-town lot. Ridge caps, drip edge, and valley metal have to be detailed — not tacked on.',
-      },
-      {
-        question: 'Is Benbrook in DFW hail country?',
-        answer:
-          'Yes. We inspect for bruises you cannot see from the driveway and help you decide repair versus replace before the next season.',
-      },
-      {
-        question: 'Was this city listed as Belbrook on an older website?',
-        answer:
-          'Yes. The older site used Belbrook; the city is Benbrook, zip 76126. Same licensed crews from Arlington — Lake Benbrook, Dutch Branch, Winscott, and southwest Fort Worth.',
       },
     ],
   },

@@ -16,7 +16,7 @@ const steps = [
   },
   {
     title: 'Crews do the work',
-    body: 'Licensed crews from Katy or Arlington. Same standard, whichever office runs the job.',
+    body: 'Licensed crews from the Katy office. Same standard on every job.',
   },
 ] as const;
 
@@ -26,7 +26,7 @@ export function HomeProcess() {
       <SectionHeading
         eyebrow="How it works"
         title="Four steps. Then we get on the roof."
-        description="The same process from both offices — inspect, document, estimate, then do the work."
+        description="The same process every time — inspect, document, estimate, then do the work."
       />
       <Stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((step, index) => (

@@ -17,12 +17,12 @@ import {
   type ServiceRegion,
 } from '@/lib/areas';
 import { breadcrumbJsonLd, collectionPageJsonLd, pageMetadata } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { office, site } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Areas Served | Houston & Fort Worth Roofing',
+  title: 'Areas Served | Houston Roofing',
   description:
-    'Reynolds Roofing TX serves Houston, Katy, Sugar Land, Stafford, Cypress, Jersey Village, Greater Houston, Fort Worth, Arlington, and Benbrook with licensed local crews.',
+    'Reynolds Roofing TX serves Houston, Katy, Sugar Land, Stafford, Cypress, Jersey Village, and Greater Houston with licensed local crews.',
   path: '/areas-served',
 });
 
@@ -32,12 +32,6 @@ const regions: { key: ServiceRegion; title: string; description: string }[] = [
     title: 'Greater Houston',
     description:
       'Dispatched from our Katy office on Katy Freeway — west, north, and southwest Houston plus Fort Bend County.',
-  },
-  {
-    key: 'dfw',
-    title: 'Dallas–Fort Worth',
-    description:
-      'Dispatched from our Arlington office on Matlock Road — Fort Worth, Arlington, and Benbrook.',
   },
 ];
 
@@ -54,7 +48,7 @@ export default function AreasServedPage() {
         data={collectionPageJsonLd({
           name: `Areas Served | ${site.name}`,
           description:
-            'Roofing service areas across Greater Houston and Dallas–Fort Worth.',
+            'Roofing service areas across Greater Houston.',
           path: '/areas-served',
           items: regions.flatMap(({ key }) =>
             areasByRegion(key).map((area) => ({
@@ -65,7 +59,7 @@ export default function AreasServedPage() {
         })}
       />
       <PageHero
-        eyebrow="Houston · Fort Worth · Surrounding cities"
+        eyebrow="Houston · Surrounding cities"
         title="Areas we serve"
         description="Reynolds Roofing TX takes time to know each client and treat the house as if it were our own. Every city we list has a full-service team from start to finish — not a distant call center."
         compact
@@ -90,37 +84,32 @@ export default function AreasServedPage() {
       />
 
       <Section>
-        <div className="grid items-start gap-10 lg:grid-cols-2">
+        <div className="max-w-xl space-y-6">
           <FadeIn>
             <SectionHeading
               eyebrow="Local, not mainstream"
               title="A roofing company that shows up as a neighbor"
-              description="Many larger outfits will not take the time to know who you are. We do. Each location we serve has a licensed crew that handles questions and concerns from the first inspection through the last shingle."
+              description="Many larger outfits will not take the time to know who you are. We do. Each city we serve has a licensed crew that handles questions and concerns from the first inspection through the last shingle."
             />
           </FadeIn>
-          <FadeIn delay={0.08} className="grid gap-4 sm:grid-cols-2">
-            {site.locations.map((loc) => (
-              <div
-                key={loc.city}
-                className="rounded-2xl border border-border bg-card p-5"
+          <FadeIn delay={0.08}>
+            <div className="rounded-2xl border border-border bg-card p-5">
+              <p className="text-xs font-semibold tracking-wider text-primary uppercase">
+                Katy office
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {office.address}
+                <br />
+                {office.city}, {office.state} {office.zip}
+              </p>
+              <a
+                href={site.phoneHref}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-primary"
               >
-                <p className="text-xs font-semibold tracking-wider text-primary uppercase">
-                  {loc.city} office
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {loc.address}
-                  <br />
-                  {loc.city}, {loc.state} {loc.zip}
-                </p>
-                <a
-                  href={`tel:+1${loc.phone.replace(/\D/g, '')}`}
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-primary"
-                >
-                  <PhoneIcon className="size-3.5" />
-                  {loc.phone}
-                </a>
-              </div>
-            ))}
+                <PhoneIcon className="size-3.5" />
+                {office.phone}
+              </a>
+            </div>
           </FadeIn>
         </div>
       </Section>
@@ -177,7 +166,7 @@ export default function AreasServedPage() {
               Not sure if we cover your street?
             </h2>
             <p className="mt-4 text-base text-muted-foreground">
-              If you are in the Houston or Fort Worth metros, send the form.
+              If you are in the Houston metro, send the form.
               We will confirm coverage and schedule a no-obligation inspection.
             </p>
           </FadeIn>

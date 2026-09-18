@@ -18,6 +18,26 @@ import { Textarea } from '@/components/ui/textarea';
 import { servicesByCategory } from '@/lib/services';
 import { formsubmitEndpoint, site } from '@/lib/site';
 
+function fieldValue(form: HTMLFormElement, name: string) {
+  const field = form.elements.namedItem(name);
+  if (!field || !('value' in field)) return '';
+  return String(field.value).trim();
+}
+
+/** Gmail threads FormSubmit mail when `_subject` is identical. */
+function uniqueSubject(form: HTMLFormElement) {
+  const name = [fieldValue(form, 'firstName'), fieldValue(form, 'lastName')]
+    .filter(Boolean)
+    .join(' ');
+  const service = fieldValue(form, 'service');
+  const zip = fieldValue(form, 'zip');
+  const stamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
+
+  return [`New estimate request — ${site.name}`, name, service, zip, stamp]
+    .filter(Boolean)
+    .join(' · ');
+}
+
 export function LeadForm({
   defaultService,
   defaultCity,
@@ -32,30 +52,78 @@ export function LeadForm({
       action={formsubmitEndpoint}
       method="POST"
       className="grid gap-5 sm:grid-cols-2"
+      onSubmit={(event) => {
+        const subject = event.currentTarget.elements.namedItem('_subject');
+        if (subject && 'value' in subject) {
+          subject.value = uniqueSubject(event.currentTarget);
+        }
+      }}
     >
       <input type="hidden" name="_next" value={nextUrl} />
-      <input type="hidden" name="_subject" value={`New estimate request — ${site.name}`} />
+      <input
+        type="hidden"
+        name="_subject"
+        value={`New estimate request — ${site.name}`}
+      />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
-      <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+      <input
+        type="text"
+        name="_honey"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+      />
       {defaultCity ? (
         <input type="hidden" name="city" value={defaultCity} />
       ) : null}
 
       <Field label="First name" htmlFor="firstName">
-        <Input id="firstName" name="firstName" required autoComplete="given-name" className="h-11" />
+        <Input
+          id="firstName"
+          name="firstName"
+          required
+          autoComplete="given-name"
+          className="h-11"
+        />
       </Field>
       <Field label="Last name" htmlFor="lastName">
-        <Input id="lastName" name="lastName" required autoComplete="family-name" className="h-11" />
+        <Input
+          id="lastName"
+          name="lastName"
+          required
+          autoComplete="family-name"
+          className="h-11"
+        />
       </Field>
       <Field label="Email" htmlFor="email">
-        <Input id="email" name="email" type="email" required autoComplete="email" className="h-11" />
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          className="h-11"
+        />
       </Field>
       <Field label="Phone number" htmlFor="phone">
-        <Input id="phone" name="phone" type="tel" required autoComplete="tel" className="h-11" />
+        <Input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          className="h-11"
+        />
       </Field>
       <Field label="Zip code" htmlFor="zip">
-        <Input id="zip" name="zip" required autoComplete="postal-code" className="h-11" />
+        <Input
+          id="zip"
+          name="zip"
+          required
+          autoComplete="postal-code"
+          className="h-11"
+        />
       </Field>
       <Field label="Service needed" htmlFor="service">
         <Select
@@ -99,7 +167,10 @@ export function LeadForm({
       </div>
 
       <div className="sm:col-span-2">
-        <Button type="submit" className="h-12 w-full px-6 text-base font-semibold">
+        <Button
+          type="submit"
+          className="h-12 w-full px-6 text-base font-semibold cursor-pointer"
+        >
           Request a free estimate
           <ArrowRightIcon className="size-4" />
         </Button>

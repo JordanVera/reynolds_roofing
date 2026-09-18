@@ -20,7 +20,7 @@ export function HomeServiceSplit() {
     <Section id="services" className="bg-card/20 texas-grid">
       <SectionHeading
         eyebrow="What we do"
-        title="Residential and commercial. Two offices, one standard."
+        title="Residential and commercial. One standard."
         description="Pick the side that matches the building. Each list is the real spec — not a renamed copy of the other."
       />
       <div className="grid gap-5 lg:grid-cols-2">
