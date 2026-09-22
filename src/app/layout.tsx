@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
+import { Analytics } from '@vercel/analytics/react';
 import { site } from '@/lib/site';
 
 import './globals.css';
@@ -87,6 +88,7 @@ export default function RootLayout({
           <SiteFooter />
           <MobileCta />
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
