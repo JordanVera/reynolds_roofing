@@ -61,9 +61,9 @@ export default function HomePage() {
   return (
     <>
       <PageHero
-        eyebrow="Katy, TX · Greater Houston"
+        eyebrow="Greater Houston Roofing Company"
         title="Same-week roof inspections for Houston."
-        description="Free walk-through and a written estimate from the Katy office. You decide whether to repair or replace — no pressure on the roof."
+        description="Free walk-through and a written estimates. You decide whether to repair or replace your roof."
         size="lg"
         trustRow={
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/15 pt-8">
