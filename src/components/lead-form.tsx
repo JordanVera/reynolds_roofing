@@ -116,6 +116,17 @@ export function LeadForm({
           className="h-11"
         />
       </Field>
+      <div className="grid gap-2 sm:col-span-2">
+        <Label htmlFor="address">Address</Label>
+        <Input
+          id="address"
+          name="address"
+          required
+          autoComplete="street-address"
+          placeholder="Street address of the property"
+          className="h-11"
+        />
+      </div>
       <Field label="Zip code" htmlFor="zip">
         <Input
           id="zip"
